@@ -18,10 +18,10 @@ namespace Scanation
         {
             var protocol = "scannation";
 
-            var list = Registry.ClassesRoot.GetSubKeyNames().ToList();
+            var list = Registry.CurrentUser.GetSubKeyNames().ToList();
             if (!list.Contains(protocol))
             {
-                var key = Registry.ClassesRoot.CreateSubKey(protocol);
+                var key = Registry.CurrentUser.CreateSubKey(protocol);
 
                 key.SetValue("", $"URL:{protocol} Protocol");
                 key.SetValue("URL Protocol", "");
@@ -33,12 +33,12 @@ namespace Scanation
                 key.Close();
             }
 
-            // scannation://pageinanh.com?token=asdfsadf&orderId=1
+            // scannation://qiita.com/kojimadev?orderId=7410c8557a92939ef69&token
 
             if (args.Any())
             {
-                var url = args[0];
-                var params = url.Split('?')[1];
+                var url = args[0].Replace("scannation://", "");
+                string[] splitUrl = url.Split('/');
             }
 
             Application.EnableVisualStyles();
