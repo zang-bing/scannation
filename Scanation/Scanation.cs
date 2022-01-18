@@ -14,7 +14,15 @@ namespace Scanation
     {
         public Scanation()
         {
+            List<string> listDevices = new List<string>();
             InitializeComponent();
+
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                listDevices.Add(printer);
+            }
+
+            cbxPrintDevices.DataSource = listDevices;
         }
     }
 }
