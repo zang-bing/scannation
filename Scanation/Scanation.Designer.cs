@@ -422,6 +422,7 @@
             this.previewBtn.TabIndex = 28;
             this.previewBtn.Text = "プレビュー";
             this.previewBtn.UseVisualStyleBackColor = true;
+            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
             // scanBtn
             // 

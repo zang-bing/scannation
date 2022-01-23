@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Scanation;
 using System.Windows.Forms;
 
 namespace Scanation
@@ -27,8 +22,27 @@ namespace Scanation
 
             cbxPrintDevices.DataSource = listDevices;
 
-            var fakeImg = "https://upload.wikimedia.org/wikipedia/vi/1/1d/N%C6%A1i_n%C3%A0y_c%C3%B3_anh_-_Single_Cover.jpg";
+            var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
             pictureBox.Load(fakeImg);
+        }
+
+        private void decisionBtn_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void previewBtn_Click(object sender, EventArgs e)
+        {
+            Form preViewForm = new Form();
+            var picture = new PictureBox();
+            picture.Load("https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9");
+            preViewForm.Controls.Add(picture);
+            preViewForm.ShowDialog();
         }
     }
 }

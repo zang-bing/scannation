@@ -39,6 +39,8 @@ namespace Scanation
             {
                 var url = args[0].Replace("scannation://", "");
                 string[] splitUrl = url.Split('/');
+                // var url = args[0];
+                // var paramsParse = url.Split('?')[1];
             }
 
             Application.EnableVisualStyles();
