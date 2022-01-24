@@ -27,7 +27,6 @@ namespace Scanation
             dpiCb2.SelectedIndex = 4;
 
             var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
-            pictureBox.Load(fakeImg);
             Bitmap bitmap = ImageUtils.FromUrl(fakeImg);
             bitmap.SetResolution((float)(bitmap.Width * 0.5), (float)(bitmap.Height * .5));
             pictureBox.Image = bitmap;
@@ -70,8 +69,14 @@ namespace Scanation
         private void previewBtn_Click(object sender, EventArgs e)
         {
             Form preViewForm = new Form();
+            
             var picture = new PictureBox();
+            
             picture.Image = ImageUtils.FromUrl("https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9");
+            Size size = new Size(picture.Image.Width, picture.Image.Height);
+            picture.Size = size;
+            preViewForm.Width = picture.Width;
+            preViewForm.Height = picture.Height;
             preViewForm.Controls.Add(picture);
             preViewForm.ShowDialog();
         }
