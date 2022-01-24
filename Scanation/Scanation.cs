@@ -8,6 +8,7 @@ namespace Scanation
 {
     public partial class Scanation : Form
     {
+        private Bitmap _initialImage;
         public Scanation()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace Scanation
 
             var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
             Bitmap bitmap = ImageUtils.FromUrl(fakeImg);
-            bitmap.SetResolution((float)(bitmap.Width * 0.5), (float)(bitmap.Height * .5));
+            _initialImage = (Bitmap)bitmap.Clone();
             pictureBox.Image = bitmap;
             var size = int.Parse(dpiCb1.SelectedItem.ToString());
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
@@ -63,7 +64,12 @@ namespace Scanation
         {
             ComboBox comboBox = (ComboBox)sender;
             int size = int.Parse(comboBox.SelectedItem.ToString());
-            pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+            if (pictureBox.Image == null) return;
+            var newImage = ImageUtils.CvResize(new Bitmap(_initialImage), size, size);
+            if (newImage != null)
+            {
+                pictureBox.Image = newImage;
+            }
         }
 
         private void previewBtn_Click(object sender, EventArgs e)

@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace Scanation.Utils
 {
@@ -27,8 +29,19 @@ namespace Scanation.Utils
                         g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapmode);
                     }
                 }
+                image.Dispose();
             }
             return destImage;
+        }
+
+        public static Bitmap CvResize(Bitmap bitmap, int targetWidth, int targetHeight)
+        {
+            if (bitmap != null)
+            {
+                var cvImage = bitmap.ToImage<Bgr, byte>();
+                return cvImage.Resize(targetWidth, targetHeight, Emgu.CV.CvEnum.Inter.LinearExact).ToBitmap();
+            }
+            return null;
         }
 
         public static Bitmap FromUrl(string url)
