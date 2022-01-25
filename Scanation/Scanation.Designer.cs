@@ -31,8 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dpiCb1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.removeFrameBtn = new System.Windows.Forms.Button();
+            this.addFrameBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.printDevicesCb1 = new System.Windows.Forms.ComboBox();
@@ -83,8 +83,8 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dpiCb1);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.button10);
+            this.tabPage1.Controls.Add(this.removeFrameBtn);
+            this.tabPage1.Controls.Add(this.addFrameBtn);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.printDevicesCb1);
@@ -121,33 +121,36 @@
             this.dpiCb1.TabIndex = 5;
             this.dpiCb1.SelectedIndexChanged += new System.EventHandler(this.DpiCb1_SelectedIndexChanged);
             // 
-            // button1
+            // removeFrameBtn
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button1.FlatAppearance.BorderSize = 2;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(400, 338);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "選択枠を削除";
-            this.button1.UseVisualStyleBackColor = true;
+            this.removeFrameBtn.Enabled = false;
+            this.removeFrameBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.removeFrameBtn.FlatAppearance.BorderSize = 2;
+            this.removeFrameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.removeFrameBtn.Location = new System.Drawing.Point(400, 338);
+            this.removeFrameBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.removeFrameBtn.Name = "removeFrameBtn";
+            this.removeFrameBtn.Size = new System.Drawing.Size(99, 23);
+            this.removeFrameBtn.TabIndex = 7;
+            this.removeFrameBtn.Text = "選択枠を削除";
+            this.removeFrameBtn.UseVisualStyleBackColor = true;
+            this.removeFrameBtn.Click += new System.EventHandler(this.RemoveFrameBtn_Click);
             // 
-            // button10
+            // addFrameBtn
             // 
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button10.FlatAppearance.BorderSize = 2;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button10.Location = new System.Drawing.Point(200, 338);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(108, 23);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "選択枠を追加";
-            this.button10.UseVisualStyleBackColor = true;
+            this.addFrameBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addFrameBtn.FlatAppearance.BorderSize = 2;
+            this.addFrameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.addFrameBtn.Location = new System.Drawing.Point(200, 338);
+            this.addFrameBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.addFrameBtn.Name = "addFrameBtn";
+            this.addFrameBtn.Size = new System.Drawing.Size(108, 23);
+            this.addFrameBtn.TabIndex = 6;
+            this.addFrameBtn.Text = "選択枠を追加";
+            this.addFrameBtn.UseVisualStyleBackColor = true;
+            this.addFrameBtn.Click += new System.EventHandler(this.AddFrameBtn_Click);
             // 
             // label1
             // 
@@ -515,7 +518,6 @@
             this.Name = "Scanation";
             this.Text = "Scanation";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Scanation_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -538,8 +540,8 @@
         private System.Windows.Forms.Button scanBtn;
         private System.Windows.Forms.Button preScanBtn;
         private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button removeFrameBtn;
+        private System.Windows.Forms.Button addFrameBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox printDevicesCb1;

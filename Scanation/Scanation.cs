@@ -3,12 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace Scanation
 {
     public partial class Scanation : Form
     {
+        // image
         private Bitmap _initialImage;
+        private Bitmap _grayImage;
+
+        private Point RectStartPoint;
+        private Rectangle Rect = new Rectangle();
+        private Brush selectionBrush = new SolidBrush(Color.FromArgb(128, 72, 145, 220));
+
+        private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
+        private int _initalFramePos = 10;
+
+        // constants
+        private const int FRAME_SIZE = 100;
+
         public Scanation()
         {
             InitializeComponent();
@@ -30,6 +45,7 @@ namespace Scanation
             var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
             Bitmap bitmap = ImageUtils.FromUrl(fakeImg);
             _initialImage = (Bitmap)bitmap.Clone();
+            _grayImage = ((Bitmap)bitmap.Clone()).ToImage<Gray, byte>().ToBitmap();
             pictureBox.Image = bitmap;
             var size = int.Parse(dpiCb1.SelectedItem.ToString());
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
@@ -95,6 +111,67 @@ namespace Scanation
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            RectStartPoint = e.Location;
+        }
+
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+            Point tempEndPoint = e.Location;
+            Rect.Location = new Point(
+                Math.Min(RectStartPoint.X, tempEndPoint.X),
+                Math.Min(RectStartPoint.Y, tempEndPoint.Y));
+            Rect.Size = new Size(
+                Math.Abs(RectStartPoint.X - tempEndPoint.X),
+                Math.Abs(RectStartPoint.Y - tempEndPoint.Y));
+            pictureBox.Invalidate();
+        }
+
+        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void PictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureBox.Image != null)
+            {
+                if (Rect != null && Rect.Width > 0 && Rect.Height > 0)
+                {
+                    e.Graphics.FillRectangle(selectionBrush, Rect);
+                }
+            }
+        }
+
+        private void AddFrameBtn_Click(object sender, EventArgs e)
+        {
+            var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
+            _initalFramePos += 10;
+            sizableRect.SetPictureBox(pictureBox);
+            _frames.Push(sizableRect);
+            pictureBox.Invalidate();
+
+            if (!removeFrameBtn.Enabled)
+            {
+                removeFrameBtn.Enabled = true;
+            }
+        }
+
+        private void RemoveFrameBtn_Click(object sender, EventArgs e)
+        {
+            var frame = _frames.Pop();
+            frame.Dispose();
+            pictureBox.Invalidate();
+
+            if (_frames.Count <= 0)
+            {
+                removeFrameBtn.Enabled = false;
+            }
         }
     }
 }
