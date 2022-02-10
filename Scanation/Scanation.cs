@@ -53,13 +53,20 @@ namespace Scanation
 
         private void OnScanBtn_Click(object sender, EventArgs e)
         {
-            var printDocument = new System.Drawing.Printing.PrintDocument();
-            PrintDialog printDialog = new PrintDialog();
-            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(OnPrintDocument_PrintPage);
-            printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            foreach (var frame in _frames)
             {
-                printDocument.Print();
+                var printDocument = new System.Drawing.Printing.PrintDocument();
+                PrintDialog printDialog = new PrintDialog();
+                printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+                {
+                    printEvt.Graphics.DrawImage(frame.SelectedBitmap, 0, 0);
+                });
+                printDialog.Document = printDocument;
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.Print();
+                }
+                printDocument.Dispose();
             }
         }
 

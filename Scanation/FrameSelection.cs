@@ -15,6 +15,7 @@ namespace Scanation
         private int _oldY;
         private int _rectNodeSize = 5;
         private Bitmap _bmp = null;
+        private Bitmap _selectedBmp = null;
         private PosSizableRect nodeSelected = PosSizableRect.None;
 
         private enum PosSizableRect
@@ -60,6 +61,8 @@ namespace Scanation
             this._bmp = bmp;
         }
 
+        public Bitmap SelectedBitmap => this._selectedBmp;
+
         public void SetPictureBox(PictureBox p)
         {
             _pictureBox = p;
@@ -101,6 +104,11 @@ namespace Scanation
         {
             _isClick = false;
             _move = false;
+            if (_pictureBox != null)
+            {
+                var bmp = new Bitmap(_pictureBox.Image);
+                _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
+            }
         }
 
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)
@@ -156,6 +164,7 @@ namespace Scanation
                     {
                         Rect.X = Rect.X + e.X - _oldX;
                         Rect.Y = Rect.Y + e.Y - _oldY;
+                        Console.WriteLine($"{Rect.X} {Rect.Y} {Rect.Width} {Rect.Height}");
                     }
                     break;
             }
@@ -291,6 +300,7 @@ namespace Scanation
             _pictureBox.MouseMove -= PictureBox_MouseMove;
             _pictureBox.Paint -= PictureBox_Paint;
             _pictureBox = null;
+            _selectedBmp.Dispose();
         }
     }
 }
