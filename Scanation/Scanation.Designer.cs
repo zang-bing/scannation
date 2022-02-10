@@ -517,7 +517,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Scanation";
             this.Text = "Scanation";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Scanation_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
