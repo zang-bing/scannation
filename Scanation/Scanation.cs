@@ -91,7 +91,10 @@ namespace Scanation
                 PrintDialog printDialog = new PrintDialog();
                 printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
                 {
-                    printEvt.Graphics.DrawImage(frame.SelectedBitmap, 0, 0);
+                    printEvt.Graphics.DrawImage(
+                        frame.SelectedBitmap,
+                        (printEvt.PageBounds.Width - frame.Rect.Width) / 2,
+                        (printEvt.PageBounds.Height - frame.Rect.Height) / 2);
                 });
                 printDialog.Document = printDocument;
                 if (printDialog.ShowDialog() == DialogResult.OK)
