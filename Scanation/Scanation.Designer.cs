@@ -433,7 +433,7 @@
             this.decisionBtn.TabIndex = 29;
             this.decisionBtn.Text = "決定";
             this.decisionBtn.UseVisualStyleBackColor = true;
-            this.decisionBtn.Click += new System.EventHandler(this.decisionBtn_Click);
+            this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
             // 
             // previewBtn
             // 
@@ -448,7 +448,7 @@
             this.previewBtn.TabIndex = 28;
             this.previewBtn.Text = "プレビュー";
             this.previewBtn.UseVisualStyleBackColor = true;
-            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
+            this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
             // 
             // scanBtn
             // 
@@ -492,7 +492,7 @@
             this.closeBtn.TabIndex = 25;
             this.closeBtn.Text = "閉じる";
             this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // pictureBox
             // 

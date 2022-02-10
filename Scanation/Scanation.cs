@@ -14,10 +14,6 @@ namespace Scanation
         private Bitmap _initialImage;
         private Bitmap _grayImage;
 
-        private Point RectStartPoint;
-        private Rectangle Rect = new Rectangle();
-        private Brush selectionBrush = new SolidBrush(Color.FromArgb(128, 72, 145, 220));
-
         private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
         private int _initalFramePos = 10;
 
@@ -78,11 +74,6 @@ namespace Scanation
             bitmap.Dispose();
         }
 
-        private void OnDpiTb_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DpiCb1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -95,7 +86,7 @@ namespace Scanation
             }
         }
 
-        private void previewBtn_Click(object sender, EventArgs e)
+        private void PreviewBtn_Click(object sender, EventArgs e)
         {
             Form preViewForm = new Form();
             
@@ -110,50 +101,16 @@ namespace Scanation
             preViewForm.ShowDialog();
         }
 
-        private void decisionBtn_Click(object sender, EventArgs e)
+        private void DecisionBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void closeBtn_Click(object sender, EventArgs e)
+        private void CloseBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            RectStartPoint = e.Location;
-        }
-
-        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-                return;
-            Point tempEndPoint = e.Location;
-            Rect.Location = new Point(
-                Math.Min(RectStartPoint.X, tempEndPoint.X),
-                Math.Min(RectStartPoint.Y, tempEndPoint.Y));
-            Rect.Size = new Size(
-                Math.Abs(RectStartPoint.X - tempEndPoint.X),
-                Math.Abs(RectStartPoint.Y - tempEndPoint.Y));
-            pictureBox.Invalidate();
-        }
-
-        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void PictureBox_Paint(object sender, PaintEventArgs e)
-        {
-            if (pictureBox.Image != null)
-            {
-                if (Rect != null && Rect.Width > 0 && Rect.Height > 0)
-                {
-                    e.Graphics.FillRectangle(selectionBrush, Rect);
-                }
-            }
-        }
 
         private void AddFrameBtn_Click(object sender, EventArgs e)
         {
