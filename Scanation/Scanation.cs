@@ -49,6 +49,37 @@ namespace Scanation
 
         private void OnScanBtn_Click(object sender, EventArgs e)
         {
+            if (_frames.Count > 0)
+            {
+                PrintFrames();
+                return;
+            } else
+            {
+                PrintPicture();
+            }
+        }
+
+        private void PrintPicture()
+        {
+            var printDocument = new System.Drawing.Printing.PrintDocument();
+            PrintDialog printDialog = new PrintDialog();
+            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs e) =>
+            {
+                Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+                pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+                e.Graphics.DrawImage(bitmap, 0, 0);
+                bitmap.Dispose();
+            });
+            printDialog.Document = printDocument;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+            printDocument.Dispose();
+        }
+
+        private void PrintFrames()
+        {
             foreach (var frame in _frames)
             {
                 var printDocument = new System.Drawing.Printing.PrintDocument();
@@ -64,14 +95,6 @@ namespace Scanation
                 }
                 printDocument.Dispose();
             }
-        }
-
-        private void OnPrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
-            pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
-            e.Graphics.DrawImage(bitmap, 0, 0);
-            bitmap.Dispose();
         }
 
         private void DpiCb1_SelectedIndexChanged(object sender, EventArgs e)
