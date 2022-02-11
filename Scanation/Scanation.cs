@@ -61,47 +61,18 @@ namespace Scanation
 
         private void PrintPicture()
         {
-            var printDocument = new System.Drawing.Printing.PrintDocument();
-            PrintDialog printDialog = new PrintDialog();
-            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs e) =>
-            {
-                var width = pictureBox.Image.Width;
-                var height = pictureBox.Image.Height;
-                Bitmap bitmap = new Bitmap(width, height);
-                pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
-                e.Graphics.DrawImage(
-                    bitmap,
-                    (e.PageBounds.Width - width) / 2,
-                    (e.PageBounds.Height - height) / 2);
-                bitmap.Dispose();
-            });
-            printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
-            printDocument.Dispose();
+            var width = pictureBox.Image.Width;
+            var height = pictureBox.Image.Height;
+            Bitmap bitmap = new Bitmap(width, height);
+            pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
+            ImageUtils.Print(bitmap);
         }
 
         private void PrintFrames()
         {
             foreach (var frame in _frames)
             {
-                var printDocument = new System.Drawing.Printing.PrintDocument();
-                PrintDialog printDialog = new PrintDialog();
-                printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
-                {
-                    printEvt.Graphics.DrawImage(
-                        frame.SelectedBitmap,
-                        (printEvt.PageBounds.Width - frame.Rect.Width) / 2,
-                        (printEvt.PageBounds.Height - frame.Rect.Height) / 2);
-                });
-                printDialog.Document = printDocument;
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
-                    printDocument.Print();
-                }
-                printDocument.Dispose();
+                ImageUtils.Print(frame.SelectedBitmap);
             }
         }
 

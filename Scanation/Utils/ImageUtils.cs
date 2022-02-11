@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
@@ -51,6 +52,25 @@ namespace Scanation.Utils
             var responseStream = response.GetResponseStream();
             Bitmap bitmap = new Bitmap(responseStream);
             return bitmap;
+        }
+
+        public static void Print(Bitmap bitmap)
+        {
+            var printDocument = new System.Drawing.Printing.PrintDocument();
+            PrintDialog printDialog = new PrintDialog();
+            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+            {
+                printEvt.Graphics.DrawImage(
+                    bitmap,
+                    (printEvt.PageBounds.Width - bitmap.Width) / 2,
+                    (printEvt.PageBounds.Height - bitmap.Height) / 2);
+            });
+            printDialog.Document = printDocument;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+            printDocument.Dispose();
         }
     }
 }
