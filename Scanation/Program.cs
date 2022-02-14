@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Scanation
 {
@@ -31,19 +32,25 @@ namespace Scanation
                 key.Close();
             }
 
-            // scannation://qiita.com/kojimadev?orderId=7410c8557a92939ef69&token
-
+            // scannation://qiita.com/kojimadev?orderId=7410c8557a92939ef69&token=097809709klhxlvkdlvkdlsjv
+            var orderId = "";
+            var token = "";
             if (args.Any())
             {
                 var url = args[0].Replace("scannation://", "");
-                string[] splitUrl = url.Split('/');
-                // var url = args[0];
-                // var paramsParse = url.Split('?')[1];
+                var pattenId = @"/id=[\d]*/g";
+                var pattenName = @"/name=[\d]*/g";
+
+                Match foundId = Regex.Match(url, pattenId, RegexOptions.IgnoreCase);
+                Match foundName = Regex.Match(url, pattenName, RegexOptions.IgnoreCase);
+
+                orderId = foundId.Value.ToString();
+                token = foundName.Value.ToString();
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Scanation());
+            Application.Run(new Scanation(orderId, token));
         }
     }
 }

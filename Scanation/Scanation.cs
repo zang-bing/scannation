@@ -20,9 +20,11 @@ namespace Scanation
         // constants
         private const int FRAME_SIZE = 100;
 
-        public Scanation()
+        public Scanation(string id, string name)
         {
             InitializeComponent();
+            textBoxId.Text = id;
+            textBoxName.Text = name;
         }
 
         private void Scanation_Load(object sender, EventArgs e)
