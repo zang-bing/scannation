@@ -139,5 +139,10 @@ namespace Scanation
                 removeFrameBtn.Enabled = false;
             }
         }
+
+        private void preScanBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
