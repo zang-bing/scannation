@@ -92,8 +92,12 @@ namespace Scanation
 
         private void PreviewBtn_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             Form preViewForm = new Form();
-            
+            preViewForm.FormClosed += (object _, FormClosedEventArgs eventArgs) =>
+            {
+                this.Visible = true;
+            };
             var picture = new PictureBox();
             
             picture.Image = ImageUtils.FromUrl("https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9");
@@ -103,6 +107,8 @@ namespace Scanation
             preViewForm.Height = picture.Height;
             preViewForm.Controls.Add(picture);
             preViewForm.ShowDialog();
+
+            
         }
 
         private void DecisionBtn_Click(object sender, EventArgs e)
