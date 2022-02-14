@@ -12,7 +12,6 @@ namespace Scanation
     {
         // image
         private Bitmap _initialImage;
-        private Bitmap _grayImage;
 
         private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
         private int _initalFramePos = 10;
@@ -43,7 +42,6 @@ namespace Scanation
             var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
             Bitmap bitmap = ImageUtils.FromUrl(fakeImg);
             _initialImage = (Bitmap)bitmap.Clone();
-            _grayImage = ((Bitmap)bitmap.Clone()).ToImage<Gray, byte>().ToBitmap();
             pictureBox.Image = bitmap;
             var size = int.Parse(dpiCb1.SelectedItem.ToString());
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
