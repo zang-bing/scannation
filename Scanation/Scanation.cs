@@ -66,6 +66,7 @@ namespace Scanation
             Bitmap bitmap = new Bitmap(width, height);
             pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
             ImageUtils.Print(bitmap);
+            ImageUtils.SaveToFile(bitmap);
         }
 
         private void PrintFrames()
@@ -73,6 +74,7 @@ namespace Scanation
             foreach (var frame in _frames)
             {
                 ImageUtils.Print(frame.SelectedBitmap);
+                ImageUtils.SaveToFile(frame.SelectedBitmap);
             }
         }
 

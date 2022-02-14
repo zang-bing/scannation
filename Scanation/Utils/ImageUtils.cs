@@ -1,7 +1,10 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
@@ -71,6 +74,26 @@ namespace Scanation.Utils
                 printDocument.Print();
             }
             printDocument.Dispose();
+        }
+
+        public static void SaveToFile(Bitmap bitmap)
+        {
+            if (!Directory.Exists(Constants.IMAGE_LOCATION))
+            {
+                Directory.CreateDirectory(Constants.IMAGE_LOCATION);
+            }
+            var fileName = string.Format(@"{0}.jpg", Guid.NewGuid());
+            //bitmap.Save($"{Constants.IMAGE_LOCATION}\\{fileName}", ImageFormat.Jpeg);
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (FileStream fs = new FileStream($"{Constants.IMAGE_LOCATION}\\{fileName}", FileMode.Create, FileAccess.ReadWrite))
+                {
+                    bitmap.Save(memory, ImageFormat.Jpeg);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
         }
     }
 }
