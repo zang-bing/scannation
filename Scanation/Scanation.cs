@@ -97,7 +97,7 @@ namespace Scanation
                 this.Visible = true;
             };
             var picture = new PictureBox();
-            
+             
             picture.Image = ImageUtils.FromUrl("https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9");
             Size size = new Size(picture.Image.Width, picture.Image.Height);
             picture.Size = size;

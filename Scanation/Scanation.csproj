@@ -80,6 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrameSelection.cs" />
+    <Compile Include="Utils\AwsUtils.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <EmbeddedResource Include="Scanation.resx">
       <DependentUpon>Scanation.cs</DependentUpon>
@@ -107,6 +108,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AWSSDK.S3">
+      <Version>3.7.7.21</Version>
+    </PackageReference>
     <PackageReference Include="Emgu.CV">
       <Version>4.5.5.4823</Version>
     </PackageReference>
