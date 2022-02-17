@@ -19,9 +19,10 @@ namespace Scanation
 
             var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-            // check HKEY_CURRENT_USER\Software\HiroSyasin
+            var arg = "scannation://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
+            var url = arg.Replace("scannation://", "");
 
-            if (!list.Contains(protocol))
+            if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
             {
                 var key = Registry.CurrentUser.CreateSubKey(protocol);
 
@@ -33,25 +34,30 @@ namespace Scanation
                 subKey.SetValue("", $"{execPath} %1");
                 subKey.Close();
                 key.Close();
-            }
 
-            var arg = "scannation://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
-            var url = arg.Replace("scannation://", "");
+                    
 
-            if (args.Any())
+                if (args.Any())
+                {
+                    var urls = args[0].Split('?')[1].Split('&');
+                    var orderId = urls[0].Replace("id=", "");
+                    var name = urls[1].Replace("name=", "");
+
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new Scanation(orderId, name, url));
+                }
+            } else
             {
-                var urls = args[0].Split('?')[1].Split('&');
-                var orderId = urls[0].Replace("id=", "");
-                var name = urls[1].Replace("name=", "");
-
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Scanation(orderId, name, url));
+                MessageBox.Show("Regitry is not defined ...!");
             }
+        }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Scanation(url));
+        static bool KeyExists(RegistryKey baseKey, string subKeyName)
+        {
+            RegistryKey ret = baseKey.OpenSubKey(subKeyName);
+
+            return ret != null;
         }
     }
 }
