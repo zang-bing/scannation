@@ -47,6 +47,10 @@ namespace Scanation
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new Scanation(orderId, name, url));
                 }
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Scanation(url));
             } else
             {
                 MessageBox.Show("Regitry is not defined ...!");
