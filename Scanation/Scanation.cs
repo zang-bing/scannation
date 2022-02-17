@@ -135,9 +135,15 @@ namespace Scanation
             }
         }
 
-        private void preScanBtn_Click(object sender, EventArgs e)
+        private void PreScanBtn_Click(object sender, EventArgs e)
         {
-
+            var images = new List<Bitmap>();
+            foreach (var frame in _frames)
+            {
+                images.Add(frame.SelectedBitmap);
+            }
+            var preScanForm = new PrescanForm(images);
+            preScanForm.Show();
         }
 
         private void printDevicesCb1_SelectedIndexChanged(object sender, EventArgs e)
