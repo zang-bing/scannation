@@ -44,11 +44,14 @@ namespace Scanation
 
         private void PrescanForm_Load(object sender, EventArgs e)
         {
-            if (_images != null && _images.Count > 1)
+            if (_images != null && _images.Count > 0)
             {
-                nextBtn.Enabled = true;
                 _imageIndex = 0;
                 pictureBox.Image = _images[_imageIndex];
+            }
+            if (_images.Count > 1)
+            {
+                nextBtn.Enabled = true;
             }
         }
     }
