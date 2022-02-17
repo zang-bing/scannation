@@ -15,6 +15,7 @@ namespace Scanation
 
         private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
         private int _initalFramePos = 10;
+        private int _currentDpi = 300;
         public string url = "";
 
         // constants
@@ -87,14 +88,17 @@ namespace Scanation
 
             printDevicesCb1.DataSource = listDevices;
             printDevicesCb2.DataSource = listDevices;
-            dpiCb1.SelectedIndex = 4;
-            dpiCb2.SelectedIndex = 4;
+            dpiTb1.Text = $"{Constants.MIN_DPI * 3}";
+            dpiTb2.Text = $"{Constants.MIN_DPI * 3}";
 
             Bitmap bitmap = ImageUtils.FromUrl(url);
             _initialImage = (Bitmap)bitmap.Clone();
             pictureBox.Image = bitmap;
-            var size = int.Parse(dpiCb1.SelectedItem.ToString());
+            var size = int.Parse(dpiTb1.Text);
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+            scanBtn.Enabled = true;
+            preScanBtn.Enabled = true;
+            addFrameBtn.Enabled = true;
 
         }
 
@@ -149,6 +153,27 @@ namespace Scanation
         private void printDevicesCb1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DpiTb_TextChanged(object sender, EventArgs e)
+        {
+            if (pictureBox.Image == null) return;
+            int size = int.Parse(dpiTb1.Text);
+            if (size < 100 || size > 3000)
+            {
+                MessageBox.Show("");
+                return;
+            }
+            var newImage = ImageUtils.CvResize(new Bitmap(_initialImage), size, size);
+            if (newImage != null)
+            {
+                pictureBox.Image = newImage;
+            }
+        }
+
+        private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
