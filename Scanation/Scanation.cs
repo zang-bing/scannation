@@ -96,10 +96,17 @@ namespace Scanation
             pictureBox.Image = bitmap;
             var size = int.Parse(dpiTb1.Text);
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+
+            EnableComponents();
+        }
+
+        private void EnableComponents()
+        {
+            printDevicesCb1.Enabled = true;
+            dpiTb1.Enabled = true;
             scanBtn.Enabled = true;
             preScanBtn.Enabled = true;
             addFrameBtn.Enabled = true;
-
         }
 
         private void DecisionBtn_Click(object sender, EventArgs e)
@@ -159,12 +166,11 @@ namespace Scanation
         {
             if (pictureBox.Image == null) return;
             int size = int.Parse(dpiTb1.Text);
-            if (size < 100 || size > 3000)
+            if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
             {
-                MessageBox.Show("");
                 return;
             }
-            var newImage = ImageUtils.CvResize(new Bitmap(_initialImage), size, size);
+            var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
             if (newImage != null)
             {
                 pictureBox.Image = newImage;

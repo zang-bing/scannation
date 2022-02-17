@@ -105,6 +105,7 @@
             // 
             // dpiTb1
             // 
+            this.dpiTb1.Enabled = false;
             this.dpiTb1.Location = new System.Drawing.Point(150, 290);
             this.dpiTb1.Name = "dpiTb1";
             this.dpiTb1.Size = new System.Drawing.Size(228, 22);
@@ -168,6 +169,7 @@
             // 
             // printDevicesCb1
             // 
+            this.printDevicesCb1.Enabled = false;
             this.printDevicesCb1.FormattingEnabled = true;
             this.printDevicesCb1.Location = new System.Drawing.Point(150, 230);
             this.printDevicesCb1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
