@@ -300,7 +300,11 @@ namespace Scanation
             _pictureBox.MouseMove -= PictureBox_MouseMove;
             _pictureBox.Paint -= PictureBox_Paint;
             _pictureBox = null;
-            _selectedBmp.Dispose();
+
+            if (_selectedBmp != null)
+            {
+                _selectedBmp.Dispose();
+            }
         }
     }
 }
