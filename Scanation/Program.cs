@@ -17,10 +17,10 @@ namespace Scanation
         {
             var protocol = "scannation";
 
-            var list = Registry.ClassesRoot.GetSubKeyNames().ToList();
+            var list = Registry.CurrentUser.GetSubKeyNames().ToList();
             if (!list.Contains(protocol))
             {
-                var key = Registry.ClassesRoot.CreateSubKey(protocol);
+                var key = Registry.CurrentUser.CreateSubKey(protocol);
 
                 key.SetValue("", $"URL:{protocol} Protocol");
                 key.SetValue("URL Protocol", "");
@@ -41,8 +41,12 @@ namespace Scanation
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Scanation(orderId, name));
+                Application.Run(new Scanation(orderId, name, "lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9"));
             }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Scanation("lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9"));
         }
     }
 }

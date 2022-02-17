@@ -15,36 +15,23 @@ namespace Scanation
 
         private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
         private int _initalFramePos = 10;
+        public string url = "";
 
         // constants
         private const int FRAME_SIZE = 100;
 
-        public Scanation(string id, string name)
+        public Scanation(string id, string name, string url)
         {
             InitializeComponent();
             textBoxId.Text = id;
             textBoxName.Text = name;
+            this.url = "http://" + url;
         }
 
-        private void Scanation_Load(object sender, EventArgs e)
+        public Scanation(string url)
         {
-            List<string> listDevices = new List<string>();
-            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-            {
-                listDevices.Add(printer);
-            }
-
-            printDevicesCb1.DataSource = listDevices;
-            printDevicesCb2.DataSource = listDevices;
-            dpiCb1.SelectedIndex = 4;
-            dpiCb2.SelectedIndex = 4;
-
-            var fakeImg = "https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
-            Bitmap bitmap = ImageUtils.FromUrl(fakeImg);
-            _initialImage = (Bitmap)bitmap.Clone();
-            pictureBox.Image = bitmap;
-            var size = int.Parse(dpiCb1.SelectedItem.ToString());
-            pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+            InitializeComponent();
+            this.url = "http://" + url;
         }
 
         private void OnScanBtn_Click(object sender, EventArgs e)
@@ -92,23 +79,23 @@ namespace Scanation
 
         private void PreviewBtn_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            Form preViewForm = new Form();
-            preViewForm.FormClosed += (object _, FormClosedEventArgs eventArgs) =>
+            List<string> listDevices = new List<string>();
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
             {
-                this.Visible = true;
-            };
-            var picture = new PictureBox();
-             
-            picture.Image = ImageUtils.FromUrl("https://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9");
-            Size size = new Size(picture.Image.Width, picture.Image.Height);
-            picture.Size = size;
-            preViewForm.Width = picture.Width;
-            preViewForm.Height = picture.Height;
-            preViewForm.Controls.Add(picture);
-            preViewForm.ShowDialog();
+                listDevices.Add(printer);
+            }
 
-            
+            printDevicesCb1.DataSource = listDevices;
+            printDevicesCb2.DataSource = listDevices;
+            dpiCb1.SelectedIndex = 4;
+            dpiCb2.SelectedIndex = 4;
+
+            Bitmap bitmap = ImageUtils.FromUrl(url);
+            _initialImage = (Bitmap)bitmap.Clone();
+            pictureBox.Image = bitmap;
+            var size = int.Parse(dpiCb1.SelectedItem.ToString());
+            pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+
         }
 
         private void DecisionBtn_Click(object sender, EventArgs e)
@@ -149,6 +136,11 @@ namespace Scanation
         }
 
         private void preScanBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printDevicesCb1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

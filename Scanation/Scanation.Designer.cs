@@ -180,6 +180,7 @@
             this.printDevicesCb1.Name = "printDevicesCb1";
             this.printDevicesCb1.Size = new System.Drawing.Size(172, 21);
             this.printDevicesCb1.TabIndex = 3;
+            this.printDevicesCb1.SelectedIndexChanged += new System.EventHandler(this.printDevicesCb1_SelectedIndexChanged);
             // 
             // button11
             // 
@@ -517,7 +518,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Scanation";
             this.Text = "Scanation";
-            this.Load += new System.EventHandler(this.Scanation_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
