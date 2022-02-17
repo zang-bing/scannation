@@ -165,7 +165,9 @@ namespace Scanation
         private void DpiTb_TextChanged(object sender, EventArgs e)
         {
             if (pictureBox.Image == null) return;
-            int size = int.Parse(dpiTb1.Text);
+            int size;
+            var check = int.TryParse(dpiTb1.Text, out size);
+            if (!check) return;
             if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
             {
                 return;
