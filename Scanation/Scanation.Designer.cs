@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dpiCb1 = new System.Windows.Forms.ComboBox();
+            this.dpiTb1 = new System.Windows.Forms.TextBox();
             this.removeFrameBtn = new System.Windows.Forms.Button();
             this.addFrameBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +47,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dpiCb2 = new System.Windows.Forms.ComboBox();
             this.printDevicesCb2 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.preScanBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.dpiTb2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dpiCb1);
+            this.tabPage1.Controls.Add(this.dpiTb1);
             this.tabPage1.Controls.Add(this.removeFrameBtn);
             this.tabPage1.Controls.Add(this.addFrameBtn);
             this.tabPage1.Controls.Add(this.label1);
@@ -103,23 +103,14 @@
             this.tabPage1.Text = "遺影";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dpiCb1
+            // dpiTb1
             // 
-            this.dpiCb1.FormattingEnabled = true;
-            this.dpiCb1.Items.AddRange(new object[] {
-            "72",
-            "96",
-            "150",
-            "203",
-            "300",
-            "2540",
-            "4000"});
-            this.dpiCb1.Location = new System.Drawing.Point(150, 290);
-            this.dpiCb1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.dpiCb1.Name = "dpiCb1";
-            this.dpiCb1.Size = new System.Drawing.Size(228, 24);
-            this.dpiCb1.TabIndex = 5;
-            this.dpiCb1.SelectedIndexChanged += new System.EventHandler(this.DpiCb1_SelectedIndexChanged);
+            this.dpiTb1.Location = new System.Drawing.Point(150, 290);
+            this.dpiTb1.Name = "dpiTb1";
+            this.dpiTb1.Size = new System.Drawing.Size(228, 22);
+            this.dpiTb1.TabIndex = 36;
+            this.dpiTb1.TextChanged += new System.EventHandler(this.DpiTb_TextChanged);
+            this.dpiTb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DpiTb_KeyPress);
             // 
             // removeFrameBtn
             // 
@@ -139,6 +130,7 @@
             // 
             // addFrameBtn
             // 
+            this.addFrameBtn.Enabled = false;
             this.addFrameBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addFrameBtn.FlatAppearance.BorderSize = 2;
             this.addFrameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,11 +242,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dpiTb2);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.dpiCb2);
             this.tabPage2.Controls.Add(this.printDevicesCb2);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label5);
@@ -318,23 +310,6 @@
             this.label4.Size = new System.Drawing.Size(29, 16);
             this.label4.TabIndex = 46;
             this.label4.Text = "dpi";
-            // 
-            // dpiCb2
-            // 
-            this.dpiCb2.FormattingEnabled = true;
-            this.dpiCb2.Items.AddRange(new object[] {
-            "72",
-            "96",
-            "150",
-            "203",
-            "300",
-            "2540",
-            "4000"});
-            this.dpiCb2.Location = new System.Drawing.Point(150, 290);
-            this.dpiCb2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.dpiCb2.Name = "dpiCb2";
-            this.dpiCb2.Size = new System.Drawing.Size(228, 24);
-            this.dpiCb2.TabIndex = 5;
             // 
             // printDevicesCb2
             // 
@@ -453,6 +428,7 @@
             // 
             // scanBtn
             // 
+            this.scanBtn.Enabled = false;
             this.scanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.scanBtn.FlatAppearance.BorderSize = 2;
             this.scanBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -468,6 +444,7 @@
             // 
             // preScanBtn
             // 
+            this.preScanBtn.Enabled = false;
             this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.preScanBtn.FlatAppearance.BorderSize = 2;
             this.preScanBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -502,11 +479,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(571, 39);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(656, 415);
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
+            // 
+            // dpiTb2
+            // 
+            this.dpiTb2.Location = new System.Drawing.Point(150, 290);
+            this.dpiTb2.Name = "dpiTb2";
+            this.dpiTb2.Size = new System.Drawing.Size(228, 22);
+            this.dpiTb2.TabIndex = 48;
             // 
             // Scanation
             // 
@@ -556,7 +540,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox dpiCb2;
         private System.Windows.Forms.ComboBox printDevicesCb2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label5;
@@ -565,7 +548,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.ComboBox dpiCb1;
+        private System.Windows.Forms.TextBox dpiTb1;
+        private System.Windows.Forms.TextBox dpiTb2;
     }
 }
 
