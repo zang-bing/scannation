@@ -108,6 +108,7 @@ namespace Scanation
             }
             _oldX = e.X;
             _oldY = e.Y;
+            _pictureBox.Invalidate();
         }
 
         private void PictureBox_MouseUp(object sender, MouseEventArgs e)
