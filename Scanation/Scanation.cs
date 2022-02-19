@@ -5,6 +5,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using Scanation.Utils.FaceUtils;
+using Scanation.Utils.FaceUtils.Types;
+using Accord.Vision.Detection;
+using System.Xml.Linq;
+using Scanation.Extensions;
 
 namespace Scanation
 {
@@ -99,6 +104,29 @@ namespace Scanation
             pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
 
             EnableComponents();
+
+            DetecFaces();
+        }
+
+        private void DetecFaces()
+        {
+            float ScaleFactor = 1.1f;
+            int MinSize = 5;
+            ObjectDetectorScalingMode ScaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
+            ObjectDetectorSearchMode SearchMode = ObjectDetectorSearchMode.Average;
+            bool Parallel = true;
+            FaceDetector.ExtractFaces(
+                        new ImageProcessor((Bitmap)pictureBox.Image).Grayscale().EqualizeHistogram().Result,
+                        FaceDetectorParameters.Create(ScaleFactor, MinSize, ScaleMode, SearchMode, Parallel))
+                    .HasElements(pictureBox.Refresh)
+                    .ForEach((face) =>
+                    {
+                        var sizableRect = new FrameSelection(face.FaceRectangle);
+                        _initalFramePos += 10;
+                        sizableRect.SetPictureBox(pictureBox);
+                        _frames.Push(sizableRect);
+                        pictureBox.Invalidate();
+                    });
         }
 
         private void EnableComponents()
@@ -126,14 +154,13 @@ namespace Scanation
 
         private void AddFrameBtn_Click(object sender, EventArgs e)
         {
-            addDrop(1);
+            AddFrame(1);
         }
 
-        private void addDrop(int tab)
+        private void AddFrame(int tab)
         {
             if (tab == 1 && _frames.Count < 1)
             {
-                //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
                 var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
                 _initalFramePos += 10;
                 sizableRect.SetPictureBox(pictureBox);
@@ -142,7 +169,6 @@ namespace Scanation
             } 
             if (tab == 2)
             {
-                //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
                 var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
                 _initalFramePos += 10;
                 sizableRect.SetPictureBox(pictureBox);
@@ -207,7 +233,7 @@ namespace Scanation
 
         private void btnAddDrop2_Click(object sender, EventArgs e)
         {
-            addDrop(2);
+            AddFrame(2);
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)

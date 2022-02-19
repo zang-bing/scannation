@@ -4,7 +4,6 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using System.Windows.Media.Imaging;
 using Emgu.CV;
 using Emgu.CV.Structure;
 

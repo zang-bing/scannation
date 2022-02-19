@@ -19,7 +19,7 @@ namespace Scanation
 
             var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-            var arg = "scannation://lh3.googleusercontent.com/LBZbzy9NXoY_0vQQOkDQnVSzu27am8yxvcsxOk0CPhfnr7uraTv-9ONUje1b7zcK0bTqTbI1_pY2hVzXu4aGbSQ9";
+            var arg = "scannation://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/274484250_3010090445796207_3015658591875334184_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=KlQ775PFgasAX8VpKjY&_nc_ht=scontent.fhan15-2.fna&oh=00_AT-GzUdEYKONnFVjBvmm_B24VBIXJuoEsjPWfHNS2XMWzg&oe=621630D0";
             var url = arg.Replace("scannation://", "");
 
             if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
