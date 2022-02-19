@@ -24,6 +24,7 @@ namespace Scanation
         public Scanation(string id, string name, string url)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             textBoxId.Text = id;
             textBoxName.Text = name;
             this.url = "http://" + url;

@@ -508,7 +508,7 @@
             // 
             this.printDevicesCb2.Enabled = false;
             this.printDevicesCb2.FormattingEnabled = true;
-            this.printDevicesCb2.Location = new System.Drawing.Point(112, 184);
+            this.printDevicesCb2.Location = new System.Drawing.Point(112, 187);
             this.printDevicesCb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.printDevicesCb2.Name = "printDevicesCb2";
             this.printDevicesCb2.Size = new System.Drawing.Size(172, 21);
