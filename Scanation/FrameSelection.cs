@@ -17,6 +17,7 @@ namespace Scanation
         private Bitmap _bmp = null;
         private Bitmap _selectedBmp = null;
         private PosSizableRect nodeSelected = PosSizableRect.None;
+        public bool Selected { get; set; } = false;
 
         private enum PosSizableRect
         {
@@ -43,7 +44,8 @@ namespace Scanation
             {
                 return;
             }
-            g.DrawRectangle(new Pen(Color.Red), Rect);
+            int penWidth = Selected ? 2 : 1;
+            g.DrawRectangle(new Pen(Color.Red, penWidth), Rect);
 
             foreach (PosSizableRect pos in Enum.GetValues(typeof(PosSizableRect)))
             {
@@ -98,6 +100,11 @@ namespace Scanation
             if (Rect.Contains(new Point(e.X, e.Y)))
             {
                 _move = true;
+                Selected = true;
+            }
+            else
+            {
+                Selected = false;
             }
             _oldX = e.X;
             _oldY = e.Y;
@@ -303,11 +310,14 @@ namespace Scanation
 
         public void Dispose()
         {
-            _pictureBox.MouseDown -= PictureBox_MouseDown;
-            _pictureBox.MouseUp -= PictureBox_MouseUp;
-            _pictureBox.MouseMove -= PictureBox_MouseMove;
-            _pictureBox.Paint -= PictureBox_Paint;
-            _pictureBox = null;
+            if (_pictureBox != null)
+            {
+                _pictureBox.MouseDown -= PictureBox_MouseDown;
+                _pictureBox.MouseUp -= PictureBox_MouseUp;
+                _pictureBox.MouseMove -= PictureBox_MouseMove;
+                _pictureBox.Paint -= PictureBox_Paint;
+                _pictureBox = null;
+            }
 
             if (_selectedBmp != null)
             {

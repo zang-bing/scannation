@@ -18,9 +18,8 @@ namespace Scanation
         // image
         private Bitmap _initialImage;
 
-        private Stack<FrameSelection> _frames = new Stack<FrameSelection>();
+        private List<FrameSelection> _frames = new List<FrameSelection>();
         private int _initalFramePos = 10;
-        private int _currentDpi = 300;
         public string url = "";
 
         // constants
@@ -124,9 +123,13 @@ namespace Scanation
                         var sizableRect = new FrameSelection(face.FaceRectangle);
                         _initalFramePos += 10;
                         sizableRect.SetPictureBox(pictureBox);
-                        _frames.Push(sizableRect);
+                        _frames.Add(sizableRect);
                         pictureBox.Invalidate();
                     });
+            if (_frames.Count > 0)
+            {
+                removeFrameBtn.Enabled = true;
+            }
         }
 
         private void EnableComponents()
@@ -164,7 +167,7 @@ namespace Scanation
                 var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
                 _initalFramePos += 10;
                 sizableRect.SetPictureBox(pictureBox);
-                _frames.Push(sizableRect);
+                _frames.Add(sizableRect);
                 pictureBox.Invalidate();
             } 
             if (tab == 2)
@@ -172,7 +175,7 @@ namespace Scanation
                 var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
                 _initalFramePos += 10;
                 sizableRect.SetPictureBox(pictureBox);
-                _frames.Push(sizableRect);
+                _frames.Add(sizableRect);
                 pictureBox.Invalidate();
             }
 
@@ -183,8 +186,13 @@ namespace Scanation
         }
         private void RemoveFrameBtn_Click(object sender, EventArgs e)
         {
-            var frame = _frames.Pop();
-            frame.Dispose();
+            foreach(var frame in _frames)
+            {
+                if (frame.Selected)
+                {
+                    frame.Dispose();
+                }
+            }
             pictureBox.Invalidate();
 
             if (_frames.Count <= 0)
