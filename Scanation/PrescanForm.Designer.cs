@@ -40,7 +40,7 @@
             // 
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(582, 235);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -50,10 +50,10 @@
             // prevBtn
             // 
             this.prevBtn.Enabled = false;
-            this.prevBtn.Location = new System.Drawing.Point(9, 271);
-            this.prevBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.prevBtn.Location = new System.Drawing.Point(195, 263);
+            this.prevBtn.Margin = new System.Windows.Forms.Padding(2);
             this.prevBtn.Name = "prevBtn";
-            this.prevBtn.Size = new System.Drawing.Size(63, 31);
+            this.prevBtn.Size = new System.Drawing.Size(63, 34);
             this.prevBtn.TabIndex = 1;
             this.prevBtn.Text = "prev";
             this.prevBtn.UseVisualStyleBackColor = true;
@@ -62,10 +62,10 @@
             // nextBtn
             // 
             this.nextBtn.Enabled = false;
-            this.nextBtn.Location = new System.Drawing.Point(530, 271);
-            this.nextBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nextBtn.Location = new System.Drawing.Point(338, 263);
+            this.nextBtn.Margin = new System.Windows.Forms.Padding(2);
             this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(61, 32);
+            this.nextBtn.Size = new System.Drawing.Size(63, 34);
             this.nextBtn.TabIndex = 2;
             this.nextBtn.Text = "next";
             this.nextBtn.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.pictureBox);
             this.panel1.Location = new System.Drawing.Point(9, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(582, 235);
             this.panel1.TabIndex = 3;
@@ -86,13 +86,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 317);
+            this.ClientSize = new System.Drawing.Size(600, 327);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.nextBtn);
             this.Controls.Add(this.prevBtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PrescanForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PrescanForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PrescanForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel1.ResumeLayout(false);

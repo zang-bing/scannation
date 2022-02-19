@@ -93,9 +93,6 @@
     <EmbeddedResource Include="PrescanForm.resx">
       <DependentUpon>PrescanForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scanation.ja.resx">
-      <DependentUpon>Scanation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Scanation.resx">
       <DependentUpon>Scanation.cs</DependentUpon>
     </EmbeddedResource>
