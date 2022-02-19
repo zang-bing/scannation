@@ -107,6 +107,9 @@ namespace Scanation
             scanBtn.Enabled = true;
             preScanBtn.Enabled = true;
             addFrameBtn.Enabled = true;
+            btnAddDrop2.Enabled = true;
+            printDevicesCb2.Enabled = true;
+            dpiTb2.Enabled = true;
         }
 
         private void DecisionBtn_Click(object sender, EventArgs e)
@@ -122,19 +125,35 @@ namespace Scanation
 
         private void AddFrameBtn_Click(object sender, EventArgs e)
         {
-            //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
-            var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
-            _initalFramePos += 10;
-            sizableRect.SetPictureBox(pictureBox);
-            _frames.Push(sizableRect);
-            pictureBox.Invalidate();
+            addDrop(1);
+        }
+
+        private void addDrop(int tab)
+        {
+            if (tab == 1 && _frames.Count < 1)
+            {
+                //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
+                var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
+                _initalFramePos += 10;
+                sizableRect.SetPictureBox(pictureBox);
+                _frames.Push(sizableRect);
+                pictureBox.Invalidate();
+            } 
+            if (tab == 2)
+            {
+                //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
+                var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
+                _initalFramePos += 10;
+                sizableRect.SetPictureBox(pictureBox);
+                _frames.Push(sizableRect);
+                pictureBox.Invalidate();
+            }
 
             if (!removeFrameBtn.Enabled)
             {
                 removeFrameBtn.Enabled = true;
             }
         }
-
         private void RemoveFrameBtn_Click(object sender, EventArgs e)
         {
             var frame = _frames.Pop();
@@ -183,6 +202,23 @@ namespace Scanation
         private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnAddDrop2_Click(object sender, EventArgs e)
+        {
+            addDrop(2);
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            foreach (var frame in _frames)
+            {
+                frame.Dispose();
+            }
+            pictureBox.Invalidate();
+            _frames.Clear();
+            removeFrameBtn.Enabled = false;
+            btnRemoveDrop2.Enabled = false;
         }
     }
 }
