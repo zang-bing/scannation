@@ -70,6 +70,9 @@ namespace Scanation
             _pictureBox.MouseUp += PictureBox_MouseUp;
             _pictureBox.MouseMove += PictureBox_MouseMove;
             _pictureBox.Paint += PictureBox_Paint;
+
+            var bmp = new Bitmap(_pictureBox.Image);
+            _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
         }
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
@@ -107,7 +110,12 @@ namespace Scanation
             if (_pictureBox != null)
             {
                 var bmp = new Bitmap(_pictureBox.Image);
-                _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
+
+                try
+                {
+                    _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
+                }
+                catch (Exception) { }
             }
         }
 

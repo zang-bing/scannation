@@ -35,8 +35,12 @@ namespace Scanation
                 subKey.Close();
                 key.Close();
 
-                    
 
+#if DEBUG
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Scanation(url));
+#else
                 if (args.Any())
                 {
                     var urls = args[0].Split('?')[1].Split('&');
@@ -47,6 +51,7 @@ namespace Scanation
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new Scanation(orderId, name, url));
                 }
+#endif
             } else
             {
                 MessageBox.Show("Regitry is not defined ...!");

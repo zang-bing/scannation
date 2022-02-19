@@ -122,6 +122,7 @@ namespace Scanation
 
         private void AddFrameBtn_Click(object sender, EventArgs e)
         {
+            //int pictureBoxBmpX = pictureBox.Image.GetBounds().X;
             var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
             _initalFramePos += 10;
             sizableRect.SetPictureBox(pictureBox);
