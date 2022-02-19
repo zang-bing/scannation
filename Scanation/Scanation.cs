@@ -58,7 +58,7 @@ namespace Scanation
             var height = pictureBox.Image.Height;
             Bitmap bitmap = new Bitmap(width, height);
             pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
-            ImageUtils.Print(bitmap);
+            ImageUtils.Print(bitmap, printDevicesCb1.Text);
             ImageUtils.SaveToFile(bitmap);
         }
 
@@ -66,7 +66,7 @@ namespace Scanation
         {
             foreach (var frame in _frames)
             {
-                ImageUtils.Print(frame.SelectedBitmap);
+                ImageUtils.Print(frame.SelectedBitmap, printDevicesCb1.Text);
                 ImageUtils.SaveToFile(frame.SelectedBitmap);
             }
         }

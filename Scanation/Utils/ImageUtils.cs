@@ -56,10 +56,12 @@ namespace Scanation.Utils
             return bitmap;
         }
 
-        public static void Print(Bitmap bitmap)
+        public static void Print(Bitmap bitmap, string printerName)
         {
             var printDocument = new System.Drawing.Printing.PrintDocument();
-            PrintDialog printDialog = new PrintDialog();
+
+            printDocument.PrinterSettings.PrinterName = printerName;
+
             printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
             {
                 printEvt.Graphics.DrawImage(
@@ -67,11 +69,7 @@ namespace Scanation.Utils
                     (printEvt.PageBounds.Width - bitmap.Width) / 2,
                     (printEvt.PageBounds.Height - bitmap.Height) / 2);
             });
-            printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
+            printDocument.Print();
             printDocument.Dispose();
         }
 
