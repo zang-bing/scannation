@@ -58,39 +58,54 @@ namespace Scanation.Utils
 
         public static void Print(Bitmap bitmap, string printerName)
         {
-            var printDocument = new System.Drawing.Printing.PrintDocument();
-
-            printDocument.PrinterSettings.PrinterName = printerName;
-
-            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+            try
             {
-                printEvt.Graphics.DrawImage(
-                    bitmap,
-                    (printEvt.PageBounds.Width - bitmap.Width) / 2,
-                    (printEvt.PageBounds.Height - bitmap.Height) / 2);
-            });
-            printDocument.Print();
-            printDocument.Dispose();
+                var printDocument = new System.Drawing.Printing.PrintDocument();
+
+                printDocument.PrinterSettings.PrinterName = printerName;
+
+                printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+                {
+                    printEvt.Graphics.DrawImage(
+                        bitmap,
+                        (printEvt.PageBounds.Width - bitmap.Width) / 2,
+                        (printEvt.PageBounds.Height - bitmap.Height) / 2);
+                });
+                printDocument.Print();
+                printDocument.Dispose();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
         public static void SaveToFile(Bitmap bitmap)
         {
-            if (!Directory.Exists(Constants.IMAGE_LOCATION))
+            try
             {
-                Directory.CreateDirectory(Constants.IMAGE_LOCATION);
-            }
-            var fileName = string.Format(@"{0}.jpg", Guid.NewGuid());
-            //bitmap.Save($"{Constants.IMAGE_LOCATION}\\{fileName}", ImageFormat.Jpeg);
-
-            using (MemoryStream memory = new MemoryStream())
-            {
-                using (FileStream fs = new FileStream($"{Constants.IMAGE_LOCATION}\\{fileName}", FileMode.Create, FileAccess.ReadWrite))
+                if (bitmap == null) return;
+                if (!Directory.Exists(Constants.IMAGE_LOCATION))
                 {
-                    bitmap.Save(memory, ImageFormat.Jpeg);
-                    byte[] bytes = memory.ToArray();
-                    fs.Write(bytes, 0, bytes.Length);
+                    Directory.CreateDirectory(Constants.IMAGE_LOCATION);
                 }
+                var fileName = string.Format(@"{0}.jpg", Guid.NewGuid());
+                //bitmap.Save($"{Constants.IMAGE_LOCATION}\\{fileName}", ImageFormat.Jpeg);
+
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    using (FileStream fs = new FileStream($"{Constants.IMAGE_LOCATION}\\{fileName}", FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        bitmap.Save(memory, ImageFormat.Jpeg);
+                        byte[] bytes = memory.ToArray();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message, ex);
             }
+            
         }
     }
 }

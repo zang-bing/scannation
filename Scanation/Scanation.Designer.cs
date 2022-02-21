@@ -43,6 +43,7 @@
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.printDevicesCb2 = new System.Windows.Forms.ComboBox();
             this.dpiTb2 = new System.Windows.Forms.TextBox();
             this.btnRemoveDrop2 = new System.Windows.Forms.Button();
             this.btnAddDrop2 = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.closeBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.printDevicesCb2 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -98,9 +98,9 @@
             this.tabPage1.Controls.Add(this.textBoxId);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(402, 335);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "遺影";
@@ -110,7 +110,7 @@
             // 
             this.dpiTb1.Enabled = false;
             this.dpiTb1.Location = new System.Drawing.Point(112, 236);
-            this.dpiTb1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dpiTb1.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb1.Name = "dpiTb1";
             this.dpiTb1.Size = new System.Drawing.Size(172, 20);
             this.dpiTb1.TabIndex = 36;
@@ -256,19 +256,29 @@
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(402, 335);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "メモリアル";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // printDevicesCb2
+            // 
+            this.printDevicesCb2.Enabled = false;
+            this.printDevicesCb2.FormattingEnabled = true;
+            this.printDevicesCb2.Location = new System.Drawing.Point(112, 187);
+            this.printDevicesCb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.printDevicesCb2.Name = "printDevicesCb2";
+            this.printDevicesCb2.Size = new System.Drawing.Size(172, 21);
+            this.printDevicesCb2.TabIndex = 49;
+            // 
             // dpiTb2
             // 
             this.dpiTb2.Enabled = false;
             this.dpiTb2.Location = new System.Drawing.Point(112, 236);
-            this.dpiTb2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dpiTb2.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb2.Name = "dpiTb2";
             this.dpiTb2.Size = new System.Drawing.Size(172, 20);
             this.dpiTb2.TabIndex = 48;
@@ -365,7 +375,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(112, 73);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(186, 66);
@@ -374,7 +384,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(112, 24);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(252, 20);
             this.textBox4.TabIndex = 1;
@@ -399,19 +409,21 @@
             this.panel5.Controls.Add(this.closeBtn);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 379);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(926, 81);
             this.panel5.TabIndex = 1;
             // 
             // decisionBtn
             // 
+            this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.decisionBtn.FlatAppearance.BorderSize = 2;
             this.decisionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.decisionBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.decisionBtn.Location = new System.Drawing.Point(778, 22);
-            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
             this.decisionBtn.Name = "decisionBtn";
             this.decisionBtn.Size = new System.Drawing.Size(84, 38);
             this.decisionBtn.TabIndex = 29;
@@ -421,12 +433,13 @@
             // 
             // previewBtn
             // 
+            this.previewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.previewBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.previewBtn.FlatAppearance.BorderSize = 2;
             this.previewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.previewBtn.Location = new System.Drawing.Point(618, 22);
-            this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(84, 38);
             this.previewBtn.TabIndex = 28;
@@ -436,13 +449,14 @@
             // 
             // scanBtn
             // 
+            this.scanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.scanBtn.Enabled = false;
             this.scanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.scanBtn.FlatAppearance.BorderSize = 2;
             this.scanBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scanBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.scanBtn.Location = new System.Drawing.Point(428, 22);
-            this.scanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.scanBtn.Name = "scanBtn";
             this.scanBtn.Size = new System.Drawing.Size(84, 38);
             this.scanBtn.TabIndex = 27;
@@ -452,13 +466,14 @@
             // 
             // preScanBtn
             // 
+            this.preScanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.preScanBtn.Enabled = false;
             this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.preScanBtn.FlatAppearance.BorderSize = 2;
             this.preScanBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.preScanBtn.Location = new System.Drawing.Point(265, 22);
-            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.preScanBtn.Name = "preScanBtn";
             this.preScanBtn.Size = new System.Drawing.Size(84, 38);
             this.preScanBtn.TabIndex = 26;
@@ -468,12 +483,14 @@
             // 
             // closeBtn
             // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.closeBtn.FlatAppearance.BorderSize = 2;
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.closeBtn.Location = new System.Drawing.Point(74, 22);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(83, 38);
             this.closeBtn.TabIndex = 25;
@@ -488,7 +505,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.pictureBox);
             this.panel1.Location = new System.Drawing.Point(436, 32);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(481, 340);
             this.panel1.TabIndex = 2;
@@ -504,16 +521,6 @@
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
-            // printDevicesCb2
-            // 
-            this.printDevicesCb2.Enabled = false;
-            this.printDevicesCb2.FormattingEnabled = true;
-            this.printDevicesCb2.Location = new System.Drawing.Point(112, 187);
-            this.printDevicesCb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.printDevicesCb2.Name = "printDevicesCb2";
-            this.printDevicesCb2.Size = new System.Drawing.Size(172, 21);
-            this.printDevicesCb2.TabIndex = 49;
-            // 
             // Scanation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,7 +529,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Scanation";
             this.Text = "Scanation";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

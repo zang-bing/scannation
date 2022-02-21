@@ -93,8 +93,8 @@ namespace Scanation
 
             printDevicesCb1.DataSource = listDevices;
             printDevicesCb2.DataSource = listDevices;
-            dpiTb1.Text = $"{Constants.MIN_DPI * 20}";
-            dpiTb2.Text = $"{Constants.MIN_DPI * 20}";
+            dpiTb1.Text = $"{Constants.MIN_DPI * 5}";
+            dpiTb2.Text = $"{Constants.MIN_DPI * 5}";
 
             Bitmap bitmap = ImageUtils.FromUrl(url);
             _initialImage = (Bitmap)bitmap.Clone();
