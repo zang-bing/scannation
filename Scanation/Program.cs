@@ -19,7 +19,7 @@ namespace Scanation
 
             var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-            var arg = "scannation://daminhtan.com/images/hue/chup-anh-gia-dinh-can-chuan-bi-gi-1_2.jpg";
+            var arg = "scannation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
             var url = arg.Replace("scannation://", "");
 
             if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))

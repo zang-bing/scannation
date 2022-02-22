@@ -24,7 +24,7 @@ namespace Scanation.Utils.FaceUtils
             _detector.SearchMode = faceDetectorParameters.SearchMode;
             _detector.UseParallelProcessing = faceDetectorParameters.UseParallelProcessing;
             _detector.MaxSize = new Size(600, 600);
-            _detector.Suppression = 1;
+            _detector.Suppression = 2;
             return _detector.ProcessFrame(picture);
         }
     }
