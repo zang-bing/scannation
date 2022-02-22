@@ -212,11 +212,6 @@ namespace Scanation
             preScanForm.Show();
         }
 
-        private void printDevicesCb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DpiTb_TextChanged(object sender, EventArgs e)
         {
             if (pictureBox.Image == null) return;

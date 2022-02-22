@@ -155,5 +155,8 @@
       <Version>19.29.30138</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Capture.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

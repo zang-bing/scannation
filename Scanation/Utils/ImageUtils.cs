@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
 using Emgu.CV;
@@ -61,18 +62,34 @@ namespace Scanation.Utils
             try
             {
                 var printDocument = new System.Drawing.Printing.PrintDocument();
-
-                printDocument.PrinterSettings.PrinterName = printerName;
-
-                printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+                if (printDocument.PrinterSettings.IsValid)
                 {
-                    printEvt.Graphics.DrawImage(
-                        bitmap,
-                        (printEvt.PageBounds.Width - bitmap.Width) / 2,
-                        (printEvt.PageBounds.Height - bitmap.Height) / 2);
-                });
-                printDocument.Print();
-                printDocument.Dispose();
+                    PrintController printController = new StandardPrintController();
+                    printDocument.PrintController = printController;
+                    printDocument.PrinterSettings.PrinterName = printerName;
+
+                    Int32 unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+
+                    printDocument.DocumentName = unixTimestamp.ToString();
+
+                   /* if (printerName == "Microsoft Print to PDF") {
+                        printDocument.PrinterSettings.PrintFileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + printerName + ".pdf";
+                    }*/
+
+                    printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+                    {
+                        printEvt.Graphics.DrawImage(
+                            bitmap,
+                            (printEvt.PageBounds.Width - bitmap.Width) / 2,
+                            (printEvt.PageBounds.Height - bitmap.Height) / 2);
+                    });
+                    printDocument.Print();
+                    printDocument.Dispose();
+                    }
+                else
+                {
+                    MessageBox.Show("Printer is not valid");
+                }
             } catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
