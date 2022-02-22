@@ -24,6 +24,7 @@ namespace Scanation
 
         // constants
         private const int FRAME_SIZE = 100;
+        private int CURRENT_TAB = 1;
 
         public Scanation(string id, string name, string url)
         {
@@ -46,7 +47,8 @@ namespace Scanation
             {
                 PrintFrames();
                 return;
-            } else
+            }
+            else
             {
                 PrintPicture();
             }
@@ -120,11 +122,14 @@ namespace Scanation
                     .HasElements(pictureBox.Refresh)
                     .ForEach((face) =>
                     {
-                        var sizableRect = new FrameSelection(face.FaceRectangle);
-                        _initalFramePos += 10;
-                        sizableRect.SetPictureBox(pictureBox);
-                        _frames.Add(sizableRect);
-                        pictureBox.Invalidate();
+                        if (face._selectionRectangle.Width > 30 && face._selectionRectangle.Height > 30)
+                        {
+                            var sizableRect = new FrameSelection(face.FaceRectangle);
+                            _initalFramePos += 10;
+                            sizableRect.SetPictureBox(pictureBox);
+                            _frames.Add(sizableRect);
+                            pictureBox.Invalidate();
+                        }
                     });
             if (_frames.Count > 0)
             {
@@ -140,6 +145,7 @@ namespace Scanation
             preScanBtn.Enabled = true;
             addFrameBtn.Enabled = true;
             btnAddDrop2.Enabled = true;
+            btnRemoveDrop2.Enabled = true;
             printDevicesCb2.Enabled = true;
             dpiTb2.Enabled = true;
         }
@@ -182,18 +188,24 @@ namespace Scanation
             if (!removeFrameBtn.Enabled)
             {
                 removeFrameBtn.Enabled = true;
+                btnRemoveDrop2.Enabled = true;
             }
         }
         private void RemoveFrameBtn_Click(object sender, EventArgs e)
         {
+
+            FrameSelection currentFrame = null;
             foreach(var frame in _frames)
             {
                 if (frame.Selected)
                 {
                     frame.Dispose();
+                    currentFrame = frame;
                 }
             }
             pictureBox.Invalidate();
+
+            if (currentFrame != null) _frames.Remove(currentFrame);
 
             if (_frames.Count <= 0)
             {
@@ -241,6 +253,7 @@ namespace Scanation
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            CURRENT_TAB = tabControl1.SelectedIndex;
             foreach (var frame in _frames)
             {
                 frame.Dispose();
@@ -249,6 +262,27 @@ namespace Scanation
             _frames.Clear();
             removeFrameBtn.Enabled = false;
             btnRemoveDrop2.Enabled = false;
+        }
+
+        private void btnRemoveDrop2_Click(object sender, EventArgs e)
+        {
+            FrameSelection currentFrame = null;
+            foreach (var frame in _frames)
+            {
+                if (frame.Selected)
+                {
+                    frame.Dispose();
+                    currentFrame = frame;
+                }
+            }
+            pictureBox.Invalidate();
+
+            if (currentFrame != null) _frames.Remove(currentFrame);
+
+            if (_frames.Count <= 0)
+            {
+                removeFrameBtn.Enabled = false;
+            }
         }
     }
 }

@@ -268,6 +268,7 @@
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.textBox3);
             this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
@@ -280,55 +281,55 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label11.Location = new System.Drawing.Point(20, 371);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 25);
+            this.label11.Size = new System.Drawing.Size(75, 25);
             this.label11.TabIndex = 54;
             this.label11.Text = "解像度";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Segoe UI Historic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label12.Location = new System.Drawing.Point(614, 375);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 20);
+            this.label12.Size = new System.Drawing.Size(34, 20);
             this.label12.TabIndex = 53;
             this.label12.Text = "dpi";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label13.Location = new System.Drawing.Point(20, 298);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 25);
+            this.label13.Size = new System.Drawing.Size(90, 25);
             this.label13.TabIndex = 52;
             this.label13.Text = "ディバイス";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label14.Location = new System.Drawing.Point(617, 176);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(30, 24);
+            this.label14.Size = new System.Drawing.Size(33, 25);
             this.label14.TabIndex = 51;
             this.label14.Text = "家";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label15.Location = new System.Drawing.Point(20, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 25);
+            this.label15.Size = new System.Drawing.Size(59, 25);
             this.label15.TabIndex = 50;
             this.label15.Text = "コード";
             // 
@@ -358,7 +359,7 @@
             this.btnRemoveDrop2.Enabled = false;
             this.btnRemoveDrop2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnRemoveDrop2.FlatAppearance.BorderSize = 2;
-            this.btnRemoveDrop2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnRemoveDrop2.Location = new System.Drawing.Point(618, 480);
             this.btnRemoveDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -367,13 +368,14 @@
             this.btnRemoveDrop2.TabIndex = 7;
             this.btnRemoveDrop2.Text = "選択枠を削除";
             this.btnRemoveDrop2.UseVisualStyleBackColor = true;
+            this.btnRemoveDrop2.Click += new System.EventHandler(this.btnRemoveDrop2_Click);
             // 
             // btnAddDrop2
             // 
             this.btnAddDrop2.Enabled = false;
             this.btnAddDrop2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnAddDrop2.FlatAppearance.BorderSize = 2;
-            this.btnAddDrop2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnAddDrop2.Location = new System.Drawing.Point(425, 480);
             this.btnAddDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -388,7 +390,7 @@
             // 
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button4.FlatAppearance.BorderSize = 2;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button4.Location = new System.Drawing.Point(618, 295);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -412,7 +414,7 @@
             this.textBox4.Location = new System.Drawing.Point(119, 57);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(628, 25);
+            this.textBox4.Size = new System.Drawing.Size(628, 35);
             this.textBox4.TabIndex = 1;
             // 
             // panel5
@@ -525,10 +527,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Location = new System.Drawing.Point(897, 123);
+            this.panel1.Location = new System.Drawing.Point(897, 115);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(821, 704);
+            this.panel1.Size = new System.Drawing.Size(821, 712);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox
@@ -538,7 +540,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(-1, -1);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(821, 704);
+            this.pictureBox.Size = new System.Drawing.Size(821, 712);
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 

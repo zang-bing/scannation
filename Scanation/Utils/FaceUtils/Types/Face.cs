@@ -4,7 +4,7 @@ namespace Scanation.Utils.FaceUtils.Types
 {
     internal class Face
     {
-        private Rectangle _selectionRectangle;
+        public Rectangle _selectionRectangle;
 
         public Face(Rectangle selectionRectangle)
         {
