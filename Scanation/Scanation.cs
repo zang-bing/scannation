@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
@@ -85,20 +86,17 @@ namespace Scanation
             }
         }
 
-        private void PreviewBtn_Click(object sender, EventArgs e)
+        private async void PreviewBtn_Click(object sender, EventArgs e)
         {
-            List<string> listDevices = new List<string>();
-            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-            {
-                listDevices.Add(printer);
-            }
+            previewBtn.Enabled = false;
+            var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
 
             printDevicesCb1.DataSource = listDevices;
             printDevicesCb2.DataSource = listDevices;
             dpiTb1.Text = $"{Constants.MIN_DPI * 5}";
             dpiTb2.Text = $"{Constants.MIN_DPI * 5}";
 
-            Bitmap bitmap = ImageUtils.FromUrl(url);
+            var bitmap = await ImageUtils.FromUrl(url);
             _initialImage = (Bitmap)bitmap.Clone();
             pictureBox.Image = bitmap;
             var size = int.Parse(dpiTb1.Text);
@@ -106,30 +104,29 @@ namespace Scanation
 
             EnableComponents();
 
-            DetecFaces();
+            DetectFaces();
+            previewBtn.Enabled = true;
         }
 
-        private void DetecFaces()
+        private void DetectFaces()
         {
-            float ScaleFactor = 1.1f;
-            int MinSize = 5;
-            ObjectDetectorScalingMode ScaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
-            ObjectDetectorSearchMode SearchMode = ObjectDetectorSearchMode.Average;
-            bool Parallel = true;
+            var scaleFactor = 1.1f;
+            var minSize = 5;
+            var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
+            var searchMode = ObjectDetectorSearchMode.Average;
+            var parallel = true;
             FaceDetector.ExtractFaces(
                         new ImageProcessor((Bitmap)pictureBox.Image).Grayscale().EqualizeHistogram().Result,
-                        FaceDetectorParameters.Create(ScaleFactor, MinSize, ScaleMode, SearchMode, Parallel))
+                        FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel))
                     .HasElements(pictureBox.Refresh)
                     .ForEach((face) =>
                     {
-                        if (face._selectionRectangle.Width > 30 && face._selectionRectangle.Height > 30)
-                        {
-                            var sizableRect = new FrameSelection(face.FaceRectangle);
-                            _initalFramePos += 10;
-                            sizableRect.SetPictureBox(pictureBox);
-                            _frames.Add(sizableRect);
-                            pictureBox.Invalidate();
-                        }
+                        if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
+                        var sizableRect = new FrameSelection(face.FaceRectangle);
+                        _initalFramePos += 10;
+                        sizableRect.SetPictureBox(pictureBox);
+                        _frames.Add(sizableRect);
+                        pictureBox.Invalidate();
                     });
             if (_frames.Count > 0)
             {
@@ -193,7 +190,6 @@ namespace Scanation
         }
         private void RemoveFrameBtn_Click(object sender, EventArgs e)
         {
-
             FrameSelection currentFrame = null;
             foreach(var frame in _frames)
             {
@@ -215,11 +211,7 @@ namespace Scanation
 
         private void PreScanBtn_Click(object sender, EventArgs e)
         {
-            var images = new List<Bitmap>();
-            foreach (var frame in _frames)
-            {
-                images.Add(frame.SelectedBitmap);
-            }
+            var images = _frames.Select(frame => frame.SelectedBitmap).ToList();
             var preScanForm = new PrescanForm(images);
             preScanForm.Show();
         }
@@ -227,8 +219,7 @@ namespace Scanation
         private void DpiTb_TextChanged(object sender, EventArgs e)
         {
             if (pictureBox.Image == null) return;
-            int size;
-            var check = int.TryParse(dpiTb1.Text, out size);
+            var check = int.TryParse(dpiTb1.Text, out var size);
             if (!check) return;
             if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
             {
@@ -246,12 +237,12 @@ namespace Scanation
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void btnAddDrop2_Click(object sender, EventArgs e)
+        private void BtnAddDrop2_Click(object sender, EventArgs e)
         {
             AddFrame(2);
         }
 
-        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        private void TabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             CURRENT_TAB = tabControl1.SelectedIndex;
             foreach (var frame in _frames)
@@ -263,10 +254,10 @@ namespace Scanation
             removeFrameBtn.Enabled = false;
             btnRemoveDrop2.Enabled = false;
 
-            DetecFaces();
+            DetectFaces();
         }
 
-        private void btnRemoveDrop2_Click(object sender, EventArgs e)
+        private void BtnRemoveDrop2_Click(object sender, EventArgs e)
         {
             FrameSelection currentFrame = null;
             foreach (var frame in _frames)
