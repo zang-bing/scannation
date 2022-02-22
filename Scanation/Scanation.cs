@@ -229,6 +229,8 @@ namespace Scanation
             if (newImage != null)
             {
                 pictureBox.Image = newImage;
+                ClearFrames();
+                DetectFaces();
             }
         }
 
@@ -276,6 +278,16 @@ namespace Scanation
             {
                 removeFrameBtn.Enabled = false;
             }
+        }
+
+        private void ClearFrames()
+        {
+            foreach (var frame in _frames)
+            {
+                
+                frame.Dispose();
+            }
+            pictureBox.Invalidate();
         }
     }
 }
