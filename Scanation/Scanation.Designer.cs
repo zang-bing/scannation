@@ -86,7 +86,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(798, 621);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -368,7 +368,7 @@
             this.btnRemoveDrop2.TabIndex = 7;
             this.btnRemoveDrop2.Text = "選択枠を削除";
             this.btnRemoveDrop2.UseVisualStyleBackColor = true;
-            this.btnRemoveDrop2.Click += new System.EventHandler(this.btnRemoveDrop2_Click);
+            this.btnRemoveDrop2.Click += new System.EventHandler(this.BtnRemoveDrop2_Click);
             // 
             // btnAddDrop2
             // 
@@ -384,7 +384,7 @@
             this.btnAddDrop2.TabIndex = 6;
             this.btnAddDrop2.Text = "選択枠を追加";
             this.btnAddDrop2.UseVisualStyleBackColor = true;
-            this.btnAddDrop2.Click += new System.EventHandler(this.btnAddDrop2_Click);
+            this.btnAddDrop2.Click += new System.EventHandler(this.BtnAddDrop2_Click);
             // 
             // button4
             // 

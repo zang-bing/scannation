@@ -4,6 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
@@ -48,12 +49,14 @@ namespace Scanation.Utils
             return null;
         }
 
-        public static Bitmap FromUrl(string url)
+        public static async Task<Bitmap> FromUrl(string url)
         {
             var request = System.Net.WebRequest.Create(url);
-            var response = request.GetResponse();
+            var response = await request.GetResponseAsync();
             var responseStream = response.GetResponseStream();
-            Bitmap bitmap = new Bitmap(responseStream);
+
+            if (responseStream == null) return null;
+            var bitmap = new Bitmap(responseStream);
             return bitmap;
         }
 
