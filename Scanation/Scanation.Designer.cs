@@ -457,7 +457,7 @@
             this.previewBtn.FlatAppearance.BorderSize = 2;
             this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.previewBtn.Location = new System.Drawing.Point(1307, 22);
+            this.previewBtn.Location = new System.Drawing.Point(1181, 22);
             this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(151, 38);
@@ -493,7 +493,7 @@
             this.preScanBtn.FlatAppearance.BorderSize = 2;
             this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.preScanBtn.Location = new System.Drawing.Point(276, 22);
+            this.preScanBtn.Location = new System.Drawing.Point(452, 22);
             this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.preScanBtn.Name = "preScanBtn";
             this.preScanBtn.Size = new System.Drawing.Size(151, 38);

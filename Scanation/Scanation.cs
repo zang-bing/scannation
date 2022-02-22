@@ -262,6 +262,8 @@ namespace Scanation
             _frames.Clear();
             removeFrameBtn.Enabled = false;
             btnRemoveDrop2.Enabled = false;
+
+            DetecFaces();
         }
 
         private void btnRemoveDrop2_Click(object sender, EventArgs e)
