@@ -44,6 +44,7 @@
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -126,10 +126,11 @@
             // 
             // removeFrameBtn
             // 
+            this.removeFrameBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeFrameBtn.Enabled = false;
             this.removeFrameBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.removeFrameBtn.FlatAppearance.BorderSize = 2;
-            this.removeFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.removeFrameBtn.Location = new System.Drawing.Point(618, 480);
             this.removeFrameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -142,10 +143,11 @@
             // 
             // addFrameBtn
             // 
+            this.addFrameBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addFrameBtn.Enabled = false;
             this.addFrameBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addFrameBtn.FlatAppearance.BorderSize = 2;
-            this.addFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
             this.addFrameBtn.Location = new System.Drawing.Point(425, 480);
             this.addFrameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -191,9 +193,10 @@
             // 
             // button11
             // 
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button11.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button11.FlatAppearance.BorderSize = 2;
-            this.button11.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button11.Location = new System.Drawing.Point(618, 295);
             this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -278,6 +281,15 @@
             this.tabPage2.Text = "メモリアル";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(119, 57);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(628, 31);
+            this.textBox1.TabIndex = 55;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -359,7 +371,7 @@
             this.btnRemoveDrop2.Enabled = false;
             this.btnRemoveDrop2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnRemoveDrop2.FlatAppearance.BorderSize = 2;
-            this.btnRemoveDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnRemoveDrop2.Location = new System.Drawing.Point(618, 480);
             this.btnRemoveDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -375,7 +387,7 @@
             this.btnAddDrop2.Enabled = false;
             this.btnAddDrop2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnAddDrop2.FlatAppearance.BorderSize = 2;
-            this.btnAddDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnAddDrop2.Location = new System.Drawing.Point(425, 480);
             this.btnAddDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -390,7 +402,7 @@
             // 
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button4.FlatAppearance.BorderSize = 2;
-            this.button4.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button4.Location = new System.Drawing.Point(618, 295);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -427,70 +439,94 @@
             // 
             this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.decisionBtn.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.decisionBtn.FlatAppearance.BorderSize = 2;
-            this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.decisionBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.decisionBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose2;
+            this.decisionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.decisionBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.BorderSize = 0;
+            this.decisionBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.decisionBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.decisionBtn.Location = new System.Drawing.Point(1474, 22);
             this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
             this.decisionBtn.Name = "decisionBtn";
             this.decisionBtn.Size = new System.Drawing.Size(151, 38);
             this.decisionBtn.TabIndex = 29;
-            this.decisionBtn.Text = "決定";
             this.decisionBtn.UseVisualStyleBackColor = false;
             this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
             // 
             // previewBtn
             // 
             this.previewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.previewBtn.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.previewBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.previewBtn.FlatAppearance.BorderSize = 2;
-            this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previewBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.previewBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreview;
+            this.previewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previewBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.previewBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.BorderSize = 0;
+            this.previewBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.previewBtn.Location = new System.Drawing.Point(1181, 22);
             this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(151, 38);
             this.previewBtn.TabIndex = 28;
-            this.previewBtn.Text = "プレビュー";
             this.previewBtn.UseVisualStyleBackColor = false;
             this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
             // 
             // scanBtn
             // 
             this.scanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.scanBtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.scanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.scanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnScan;
+            this.scanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.scanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.scanBtn.Enabled = false;
-            this.scanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.scanBtn.FlatAppearance.BorderSize = 2;
-            this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.BorderSize = 0;
+            this.scanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.scanBtn.Location = new System.Drawing.Point(820, 22);
             this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.scanBtn.Name = "scanBtn";
             this.scanBtn.Size = new System.Drawing.Size(151, 38);
             this.scanBtn.TabIndex = 27;
-            this.scanBtn.Text = "スキャン";
             this.scanBtn.UseVisualStyleBackColor = false;
             this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
             // 
             // preScanBtn
             // 
             this.preScanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.preScanBtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.preScanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.preScanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreScan;
+            this.preScanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.preScanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.preScanBtn.Enabled = false;
-            this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.preScanBtn.FlatAppearance.BorderSize = 2;
-            this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.BorderSize = 0;
+            this.preScanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.preScanBtn.Location = new System.Drawing.Point(452, 22);
             this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.preScanBtn.Name = "preScanBtn";
             this.preScanBtn.Size = new System.Drawing.Size(151, 38);
             this.preScanBtn.TabIndex = 26;
-            this.preScanBtn.Text = "プレスキャン";
             this.preScanBtn.UseVisualStyleBackColor = false;
             this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
             // 
@@ -498,17 +534,23 @@
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.closeBtn.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.closeBtn.FlatAppearance.BorderSize = 2;
-            this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.closeBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose1;
+            this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.BorderSize = 0;
+            this.closeBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.closeBtn.Location = new System.Drawing.Point(103, 22);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(151, 38);
             this.closeBtn.TabIndex = 25;
-            this.closeBtn.Text = "閉じる";
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
@@ -557,15 +599,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(189, 63);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(119, 57);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 31);
-            this.textBox1.TabIndex = 55;
             // 
             // Scanation
             // 
