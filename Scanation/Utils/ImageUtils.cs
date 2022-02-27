@@ -15,38 +15,33 @@ namespace Scanation.Utils
     {
         public static Bitmap Resize(Image image, int targetWidth, int targetHeight)
         {
-            Rectangle destRect = new Rectangle(0, 0, targetWidth, targetHeight);
-            Bitmap destImage = new Bitmap(targetWidth, targetHeight);
+            var destRect = new Rectangle(0, 0, targetWidth, targetHeight);
+            var destImage = new Bitmap(targetWidth, targetHeight);
 
-            if (image != null)
+            if (image == null) return destImage;
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+            using (var g = Graphics.FromImage(destImage))
             {
-                destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-                using (var g = Graphics.FromImage(destImage))
+                g.CompositingMode = CompositingMode.SourceCopy;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                using (var wrapMode = new ImageAttributes())
                 {
-                    g.CompositingMode = CompositingMode.SourceCopy;
-                    g.CompositingQuality = CompositingQuality.HighQuality;
-                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.SmoothingMode = SmoothingMode.HighQuality;
-                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    using (var wrapmode = new ImageAttributes())
-                    {
-                        wrapmode.SetWrapMode(WrapMode.TileFlipXY);
-                        g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapmode);
-                    }
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    g.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
-                image.Dispose();
             }
+            image.Dispose();
             return destImage;
         }
 
         public static Bitmap CvResize(Bitmap bitmap, int targetWidth, int targetHeight)
         {
-            if (bitmap != null)
-            {
-                var cvImage = bitmap.ToImage<Bgr, byte>();
-                return cvImage.Resize(targetWidth, targetHeight, Emgu.CV.CvEnum.Inter.LinearExact).ToBitmap();
-            }
-            return null;
+            var cvImage = bitmap?.ToImage<Bgr, byte>();
+            return cvImage?.Resize(targetWidth, targetHeight, Emgu.CV.CvEnum.Inter.LinearExact).ToBitmap();
         }
 
         public static async Task<Bitmap> FromUrl(string url)
@@ -64,14 +59,14 @@ namespace Scanation.Utils
         {
             try
             {
-                var printDocument = new System.Drawing.Printing.PrintDocument();
+                var printDocument = new PrintDocument();
                 if (printDocument.PrinterSettings.IsValid)
                 {
                     PrintController printController = new StandardPrintController();
                     printDocument.PrintController = printController;
                     printDocument.PrinterSettings.PrinterName = printerName;
 
-                    Int32 unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+                    var unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
 
                     printDocument.DocumentName = unixTimestamp.ToString();
 
@@ -79,16 +74,16 @@ namespace Scanation.Utils
                         printDocument.PrinterSettings.PrintFileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + printerName + ".pdf";
                     }*/
 
-                    printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler((object _, System.Drawing.Printing.PrintPageEventArgs printEvt) =>
+                    printDocument.PrintPage += (_, printEvt) =>
                     {
                         printEvt.Graphics.DrawImage(
                             bitmap,
                             (printEvt.PageBounds.Width - bitmap.Width) / 2,
                             (printEvt.PageBounds.Height - bitmap.Height) / 2);
-                    });
+                    };
                     printDocument.Print();
                     printDocument.Dispose();
-                    }
+                }
                 else
                 {
                     MessageBox.Show("Printer is not valid");
@@ -109,15 +104,15 @@ namespace Scanation.Utils
                 {
                     Directory.CreateDirectory(Constants.IMAGE_LOCATION);
                 }
-                var fileName = string.Format(@"{0}.jpg", Guid.NewGuid());
+                var fileName = $@"{Guid.NewGuid()}.jpg";
                 //bitmap.Save($"{Constants.IMAGE_LOCATION}\\{fileName}", ImageFormat.Jpeg);
 
-                using (MemoryStream memory = new MemoryStream())
+                using (var memory = new MemoryStream())
                 {
-                    using (FileStream fs = new FileStream($"{Constants.IMAGE_LOCATION}\\{fileName}", FileMode.Create, FileAccess.ReadWrite))
+                    using (var fs = new FileStream($"{Constants.IMAGE_LOCATION}\\{fileName}", FileMode.Create, FileAccess.ReadWrite))
                     {
                         bitmap.Save(memory, ImageFormat.Jpeg);
-                        byte[] bytes = memory.ToArray();
+                        var bytes = memory.ToArray();
                         fs.Write(bytes, 0, bytes.Length);
                     }
                 }

@@ -3,14 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emgu.CV;
-using Emgu.CV.Structure;
 using Scanation.Utils.FaceUtils;
 using Scanation.Utils.FaceUtils.Types;
 using Accord.Vision.Detection;
-using System.Xml.Linq;
-using Scanation.Extensions;
+using LoadingIndicator.WinForms;
 
 namespace Scanation
 {
@@ -26,10 +24,12 @@ namespace Scanation
         // constants
         private const int FRAME_SIZE = 100;
         private int CURRENT_TAB = 1;
+        private LongOperation _longOperation;
 
         public Scanation(string id, string name, string url)
         {
             InitializeComponent();
+            InitializeOthers();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             textBoxId.Text = id;
             textBoxName.Text = name;
@@ -39,7 +39,13 @@ namespace Scanation
         public Scanation(string url)
         {
             InitializeComponent();
+            InitializeOthers();
             this.url = "http://" + url;
+        }
+
+        private void InitializeOthers()
+        {
+            _longOperation = new LongOperation(this, LongOperationSettings.Default);
         }
 
         private void OnScanBtn_Click(object sender, EventArgs e)
@@ -49,10 +55,7 @@ namespace Scanation
                 PrintFrames();
                 return;
             }
-            else
-            {
-                PrintPicture();
-            }
+            PrintPicture();
         }
 
         private void PrintPicture()
@@ -74,48 +77,44 @@ namespace Scanation
             }
         }
 
-        private void DpiCb1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void PreviewBtn_Click(object sender, EventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            int size = int.Parse(comboBox.SelectedItem.ToString());
-            if (pictureBox.Image == null) return;
-            var newImage = ImageUtils.CvResize(new Bitmap(_initialImage), size, size);
-            if (newImage != null)
+            using (_longOperation.Start())
             {
-                pictureBox.Image = newImage;
+                previewBtn.Enabled = false;
+                await Task.Run(async () =>
+                {
+                    var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
+
+                    printDevicesCb1.DataSource = listDevices;
+                    printDevicesCb2.DataSource = listDevices;
+                    dpiTb1.Text = $@"{Constants.MIN_DPI * 5}";
+                    dpiTb2.Text = $@"{Constants.MIN_DPI * 5}";
+
+                    var bitmap = await ImageUtils.FromUrl(url);
+                    _initialImage = (Bitmap) bitmap.Clone();
+                    pictureBox.Image = bitmap;
+                    var size = int.Parse(dpiTb1.Text);
+                    pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
+
+                    EnableComponents();
+                });
+
+                await DetectFaces();
+                previewBtn.Enabled = true;
             }
         }
 
-        private async void PreviewBtn_Click(object sender, EventArgs e)
+        private async Task DetectFaces()
         {
-            previewBtn.Enabled = false;
-            var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
-
-            printDevicesCb1.DataSource = listDevices;
-            printDevicesCb2.DataSource = listDevices;
-            dpiTb1.Text = $"{Constants.MIN_DPI * 5}";
-            dpiTb2.Text = $"{Constants.MIN_DPI * 5}";
-
-            var bitmap = await ImageUtils.FromUrl(url);
-            _initialImage = (Bitmap)bitmap.Clone();
-            pictureBox.Image = bitmap;
-            var size = int.Parse(dpiTb1.Text);
-            pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
-
-            EnableComponents();
-
-            DetectFaces();
-            previewBtn.Enabled = true;
-        }
-
-        private void DetectFaces()
-        {
-            var scaleFactor = 1.1f;
-            var minSize = 5;
-            var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
-            var searchMode = ObjectDetectorSearchMode.Average;
-            var parallel = true;
-            FaceDetector.ExtractFaces(
+            await Task.Run(() =>
+            {
+                var scaleFactor = 1.1f;
+                var minSize = 5;
+                var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
+                var searchMode = ObjectDetectorSearchMode.Average;
+                var parallel = true;
+                FaceDetector.ExtractFaces(
                         new ImageProcessor((Bitmap)pictureBox.Image).Grayscale().EqualizeHistogram().Result,
                         FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel))
                     .HasElements(pictureBox.Refresh)
@@ -128,10 +127,11 @@ namespace Scanation
                         _frames.Add(sizableRect);
                         pictureBox.Invalidate();
                     });
-            if (_frames.Count > 0)
-            {
-                removeFrameBtn.Enabled = true;
-            }
+                if (_frames.Count > 0)
+                {
+                    removeFrameBtn.Enabled = true;
+                }
+            });
         }
 
         private void EnableComponents()
@@ -216,21 +216,22 @@ namespace Scanation
             preScanForm.Show();
         }
 
-        private void DpiTb_TextChanged(object sender, EventArgs e)
+        private async void DpiTb_TextChanged(object sender, EventArgs e)
         {
-            if (pictureBox.Image == null) return;
-            var check = int.TryParse(dpiTb1.Text, out var size);
-            if (!check) return;
-            if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+            using (_longOperation.Start())
             {
-                return;
-            }
-            var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
-            if (newImage != null)
-            {
+                if (pictureBox.Image == null) return;
+                var check = int.TryParse(dpiTb1.Text, out var size);
+                if (!check) return;
+                if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                {
+                    return;
+                }
+                var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
+                if (newImage == null) return;
                 pictureBox.Image = newImage;
                 ClearFrames();
-                DetectFaces();
+                await DetectFaces();
             }
         }
 
@@ -244,19 +245,29 @@ namespace Scanation
             AddFrame(2);
         }
 
-        private void TabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        private async void TabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            CURRENT_TAB = tabControl1.SelectedIndex;
-            foreach (var frame in _frames)
+            using (_longOperation.Start())
             {
-                frame.Dispose();
-            }
-            pictureBox.Invalidate();
-            _frames.Clear();
-            removeFrameBtn.Enabled = false;
-            btnRemoveDrop2.Enabled = false;
+                await Task.Run(() =>
+                {
+                    CURRENT_TAB = tabControl1.SelectedIndex;
+                    foreach (var frame in _frames)
+                    {
+                        frame.Dispose();
+                    }
 
-            if (_initialImage != null) DetectFaces();
+                    pictureBox.Invalidate();
+                    _frames.Clear();
+                    removeFrameBtn.Enabled = false;
+                    btnRemoveDrop2.Enabled = false;
+                });
+
+                if (_initialImage != null)
+                {
+                    await DetectFaces();
+                }
+            }
         }
 
         private void BtnRemoveDrop2_Click(object sender, EventArgs e)
