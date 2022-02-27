@@ -97,6 +97,7 @@
     <Compile Include="FrameSelection.cs" />
     <Compile Include="Utils\AwsUtils.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Utils\TypeAssistant.cs" />
     <EmbeddedResource Include="PrescanForm.resx">
       <DependentUpon>PrescanForm.cs</DependentUpon>
     </EmbeddedResource>

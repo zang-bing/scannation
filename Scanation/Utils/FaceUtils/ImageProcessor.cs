@@ -5,29 +5,29 @@ namespace Scanation.Utils.FaceUtils
 {
     internal class ImageProcessor
     {
-        private Bitmap _bitmap;
-        public Bitmap Result { get => _bitmap; }
+        public Bitmap Result { get; private set; }
+
         public ImageProcessor(Bitmap bitmap)
         {
-            _bitmap = bitmap;
+            Result = bitmap;
         }
-        internal ImageProcessor Grayscale()
+        internal ImageProcessor GrayScale()
         {
-            var grayscale = new Grayscale(0.2125, 0.7154, 0.0721);
-            _bitmap = grayscale.Apply(_bitmap);
+            var grayScale = new Grayscale(0.2125, 0.7154, 0.0721);
+            Result = grayScale.Apply(Result);
             return this;
         }
 
         internal ImageProcessor EqualizeHistogram()
         {
-            HistogramEqualization filter = new HistogramEqualization();
-            filter.ApplyInPlace(_bitmap);
+            var filter = new HistogramEqualization();
+            filter.ApplyInPlace(Result);
             return this;
         }
 
         internal ImageProcessor Resize(Size size)
         {
-            _bitmap = new Bitmap(_bitmap, size);
+            Result = new Bitmap(Result, size);
             return this;
         }
     }

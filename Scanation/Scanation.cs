@@ -26,6 +26,8 @@ namespace Scanation
         private int CURRENT_TAB = 1;
         private LongOperation _longOperation;
 
+        private TypeAssistant _dpiChangeAssistant;
+
         public Scanation(string id, string name, string url)
         {
             InitializeComponent();
@@ -46,6 +48,35 @@ namespace Scanation
         private void InitializeOthers()
         {
             _longOperation = new LongOperation(this, LongOperationSettings.Default);
+            var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
+
+            printDevicesCb1.DataSource = listDevices;
+            printDevicesCb2.DataSource = listDevices;
+            dpiTb1.Text = $@"{Constants.MIN_DPI * 5}";
+            dpiTb2.Text = $@"{Constants.MIN_DPI * 5}";
+
+            _dpiChangeAssistant = new TypeAssistant();
+            _dpiChangeAssistant.Idled += (sender, args) =>
+            {
+                this.Invoke(new MethodInvoker(async () =>
+                {
+                    using (_longOperation.Start())
+                    {
+                        if (pictureBox.Image == null) return;
+                        var check = int.TryParse(dpiTb1.Text, out var size);
+                        if (!check) return;
+                        if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                        {
+                            return;
+                        }
+                        var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
+                        if (newImage == null) return;
+                        pictureBox.Image = newImage;
+                        ClearFrames();
+                        await DetectFaces();
+                    }
+                }));
+            };
         }
 
         private void OnScanBtn_Click(object sender, EventArgs e)
@@ -62,7 +93,7 @@ namespace Scanation
         {
             var width = pictureBox.Image.Width;
             var height = pictureBox.Image.Height;
-            Bitmap bitmap = new Bitmap(width, height);
+            var bitmap = new Bitmap(width, height);
             pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
             ImageUtils.Print(bitmap, printDevicesCb1.Text);
             ImageUtils.SaveToFile(bitmap);
@@ -82,23 +113,16 @@ namespace Scanation
             using (_longOperation.Start())
             {
                 previewBtn.Enabled = false;
-                await Task.Run(async () =>
-                {
-                    var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
+                var bitmap = await ImageUtils.FromUrl(url);
+                _initialImage = (Bitmap) bitmap.Clone();
+                //pictureBox.Image = bitmap;
+                var size = int.Parse(dpiTb1.Text);
+                    pictureBox.Invoke(new MethodInvoker(() =>
+                    {
+                        pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+                    }));
 
-                    printDevicesCb1.DataSource = listDevices;
-                    printDevicesCb2.DataSource = listDevices;
-                    dpiTb1.Text = $@"{Constants.MIN_DPI * 5}";
-                    dpiTb2.Text = $@"{Constants.MIN_DPI * 5}";
-
-                    var bitmap = await ImageUtils.FromUrl(url);
-                    _initialImage = (Bitmap) bitmap.Clone();
-                    pictureBox.Image = bitmap;
-                    var size = int.Parse(dpiTb1.Text);
-                    pictureBox.Image = ImageUtils.Resize(pictureBox.Image, size, size);
-
-                    EnableComponents();
-                });
+                EnableComponents();
 
                 await DetectFaces();
                 previewBtn.Enabled = true;
@@ -114,23 +138,26 @@ namespace Scanation
                 var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
                 var searchMode = ObjectDetectorSearchMode.Average;
                 var parallel = true;
-                FaceDetector.ExtractFaces(
-                        new ImageProcessor((Bitmap)pictureBox.Image).Grayscale().EqualizeHistogram().Result,
-                        FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel))
-                    .HasElements(pictureBox.Refresh)
-                    .ForEach((face) =>
-                    {
-                        if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
-                        var sizableRect = new FrameSelection(face.FaceRectangle);
-                        _initalFramePos += 10;
-                        sizableRect.SetPictureBox(pictureBox);
-                        _frames.Add(sizableRect);
-                        pictureBox.Invalidate();
-                    });
-                if (_frames.Count > 0)
+                pictureBox.Invoke(new MethodInvoker(() =>
                 {
-                    removeFrameBtn.Enabled = true;
-                }
+                    FaceDetector.ExtractFaces(
+                            new ImageProcessor((Bitmap)pictureBox.Image).GrayScale().EqualizeHistogram().Result,
+                            FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel))
+                        .HasElements(pictureBox.Refresh)
+                        .ForEach((face) =>
+                        {
+                            if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
+                            var sizableRect = new FrameSelection(face.FaceRectangle);
+                            _initalFramePos += 10;
+                            sizableRect.SetPictureBox(pictureBox);
+                            _frames.Add(sizableRect);
+                            //pictureBox.Invalidate();
+                        });
+                    if (_frames.Count > 0)
+                    {
+                        removeFrameBtn.Enabled = true;
+                    }
+                }));
             });
         }
 
@@ -191,13 +218,10 @@ namespace Scanation
         private void RemoveFrameBtn_Click(object sender, EventArgs e)
         {
             FrameSelection currentFrame = null;
-            foreach(var frame in _frames)
+            foreach (var frame in _frames.Where(frame => frame.Selected))
             {
-                if (frame.Selected)
-                {
-                    frame.Dispose();
-                    currentFrame = frame;
-                }
+                frame.Dispose();
+                currentFrame = frame;
             }
             pictureBox.Invalidate();
 
@@ -216,23 +240,9 @@ namespace Scanation
             preScanForm.Show();
         }
 
-        private async void DpiTb_TextChanged(object sender, EventArgs e)
+        private void DpiTb_TextChanged(object sender, EventArgs e)
         {
-            using (_longOperation.Start())
-            {
-                if (pictureBox.Image == null) return;
-                var check = int.TryParse(dpiTb1.Text, out var size);
-                if (!check) return;
-                if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
-                {
-                    return;
-                }
-                var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
-                if (newImage == null) return;
-                pictureBox.Image = newImage;
-                ClearFrames();
-                await DetectFaces();
-            }
+            _dpiChangeAssistant?.TextChanged();
         }
 
         private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)
@@ -249,9 +259,9 @@ namespace Scanation
         {
             using (_longOperation.Start())
             {
+                CURRENT_TAB = tabControl1.SelectedIndex;
                 await Task.Run(() =>
                 {
-                    CURRENT_TAB = tabControl1.SelectedIndex;
                     foreach (var frame in _frames)
                     {
                         frame.Dispose();
@@ -259,9 +269,9 @@ namespace Scanation
 
                     pictureBox.Invalidate();
                     _frames.Clear();
-                    removeFrameBtn.Enabled = false;
-                    btnRemoveDrop2.Enabled = false;
                 });
+                removeFrameBtn.Enabled = false;
+                btnRemoveDrop2.Enabled = false;
 
                 if (_initialImage != null)
                 {
