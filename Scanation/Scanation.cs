@@ -23,7 +23,7 @@ namespace Scanation
 
         // constants
         private const int FRAME_SIZE = 100;
-        private int CURRENT_TAB = 1;
+        private int CURRENT_TAB = 0;
         private LongOperation _longOperation;
 
         private TypeAssistant _dpiChangeAssistant;
@@ -146,12 +146,24 @@ namespace Scanation
                         .HasElements(pictureBox.Refresh)
                         .ForEach((face) =>
                         {
-                            if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
-                            var sizableRect = new FrameSelection(face.FaceRectangle);
-                            _initalFramePos += 10;
-                            sizableRect.SetPictureBox(pictureBox);
-                            _frames.Add(sizableRect);
-                            //pictureBox.Invalidate();
+                            if (CURRENT_TAB == 0 && _frames.Count != 1)
+                            {
+                                if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
+                                var sizableRect = new FrameSelection(face.FaceRectangle);
+                                _initalFramePos += 10;
+                                sizableRect.SetPictureBox(pictureBox);
+                                _frames.Add(sizableRect);
+                                pictureBox.Invalidate();
+                            }
+                            if (CURRENT_TAB == 1)
+                            {
+                                if (face._selectionRectangle.Width <= 30 || face._selectionRectangle.Height <= 30) return;
+                                var sizableRect = new FrameSelection(face.FaceRectangle);
+                                _initalFramePos += 10;
+                                sizableRect.SetPictureBox(pictureBox);
+                                _frames.Add(sizableRect);
+                                pictureBox.Invalidate();
+                            }
                         });
                     if (_frames.Count > 0)
                     {
