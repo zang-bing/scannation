@@ -79,33 +79,40 @@ namespace Scanation
             };
         }
 
-        private void OnScanBtn_Click(object sender, EventArgs e)
+        private async void OnScanBtn_Click(object sender, EventArgs e)
         {
-            if (_frames.Count > 0)
+            var printerName = printDevicesCb1.Text;
+            using (_longOperation.Start())
             {
-                PrintFrames();
-                return;
+                if (_frames.Count > 0)
+                {
+                    await PrintFrames(printerName);
+                    return;
+                }
+                PrintPicture(printerName);
             }
-            PrintPicture();
         }
 
-        private void PrintPicture()
+        private void PrintPicture(string printerName)
         {
             var width = pictureBox.Image.Width;
             var height = pictureBox.Image.Height;
             var bitmap = new Bitmap(width, height);
             pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
-            ImageUtils.Print(bitmap, printDevicesCb1.Text);
+            ImageUtils.Print(bitmap, printerName);
             ImageUtils.SaveToFile(bitmap);
         }
 
-        private void PrintFrames()
+        private async Task PrintFrames(string printerName)
         {
-            foreach (var frame in _frames)
+            await Task.Run(() =>
             {
-                ImageUtils.Print(frame.SelectedBitmap, printDevicesCb1.Text);
-                ImageUtils.SaveToFile(frame.SelectedBitmap);
-            }
+                foreach (var frame in _frames)
+                {
+                    ImageUtils.Print(frame.SelectedBitmap, printerName);
+                    ImageUtils.SaveToFile(frame.SelectedBitmap);
+                }
+            });
         }
 
         private async void PreviewBtn_Click(object sender, EventArgs e)
