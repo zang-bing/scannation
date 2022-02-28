@@ -429,19 +429,18 @@
             this.panel5.Controls.Add(this.preScanBtn);
             this.panel5.Controls.Add(this.closeBtn);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 834);
+            this.panel5.Location = new System.Drawing.Point(0, 769);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1727, 81);
+            this.panel5.Size = new System.Drawing.Size(1727, 146);
             this.panel5.TabIndex = 1;
             // 
             // decisionBtn
             // 
-            this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.decisionBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.decisionBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose2;
-            this.decisionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.decisionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.decisionBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.decisionBtn.FlatAppearance.BorderSize = 0;
@@ -451,10 +450,10 @@
             this.decisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.decisionBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.decisionBtn.Location = new System.Drawing.Point(1474, 22);
+            this.decisionBtn.Location = new System.Drawing.Point(1564, 54);
             this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
             this.decisionBtn.Name = "decisionBtn";
-            this.decisionBtn.Size = new System.Drawing.Size(151, 38);
+            this.decisionBtn.Size = new System.Drawing.Size(151, 71);
             this.decisionBtn.TabIndex = 29;
             this.decisionBtn.UseVisualStyleBackColor = false;
             this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
@@ -464,7 +463,7 @@
             this.previewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.previewBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.previewBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreview;
-            this.previewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.previewBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previewBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.previewBtn.FlatAppearance.BorderSize = 0;
@@ -474,10 +473,10 @@
             this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.previewBtn.Location = new System.Drawing.Point(1181, 22);
+            this.previewBtn.Location = new System.Drawing.Point(1198, 54);
             this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
             this.previewBtn.Name = "previewBtn";
-            this.previewBtn.Size = new System.Drawing.Size(151, 38);
+            this.previewBtn.Size = new System.Drawing.Size(151, 71);
             this.previewBtn.TabIndex = 28;
             this.previewBtn.UseVisualStyleBackColor = false;
             this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
@@ -487,7 +486,7 @@
             this.scanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.scanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.scanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnScan;
-            this.scanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.scanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.scanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.scanBtn.Enabled = false;
             this.scanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -498,10 +497,10 @@
             this.scanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.scanBtn.Location = new System.Drawing.Point(820, 22);
+            this.scanBtn.Location = new System.Drawing.Point(780, 54);
             this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.scanBtn.Name = "scanBtn";
-            this.scanBtn.Size = new System.Drawing.Size(151, 38);
+            this.scanBtn.Size = new System.Drawing.Size(151, 71);
             this.scanBtn.TabIndex = 27;
             this.scanBtn.UseVisualStyleBackColor = false;
             this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
@@ -511,7 +510,7 @@
             this.preScanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.preScanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.preScanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreScan;
-            this.preScanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.preScanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.preScanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.preScanBtn.Enabled = false;
             this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -522,21 +521,20 @@
             this.preScanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.preScanBtn.Location = new System.Drawing.Point(452, 22);
+            this.preScanBtn.Location = new System.Drawing.Point(406, 54);
             this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.preScanBtn.Name = "preScanBtn";
-            this.preScanBtn.Size = new System.Drawing.Size(151, 38);
+            this.preScanBtn.Size = new System.Drawing.Size(151, 71);
             this.preScanBtn.TabIndex = 26;
             this.preScanBtn.UseVisualStyleBackColor = false;
             this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
             // 
             // closeBtn
             // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.closeBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.closeBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose1;
-            this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.closeBtn.FlatAppearance.BorderSize = 0;
@@ -546,10 +544,10 @@
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.closeBtn.Location = new System.Drawing.Point(103, 22);
+            this.closeBtn.Location = new System.Drawing.Point(11, 54);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(151, 38);
+            this.closeBtn.Size = new System.Drawing.Size(151, 71);
             this.closeBtn.TabIndex = 25;
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -564,7 +562,7 @@
             this.panel1.Location = new System.Drawing.Point(897, 115);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(821, 712);
+            this.panel1.Size = new System.Drawing.Size(821, 649);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox
@@ -574,7 +572,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(-1, -1);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(821, 712);
+            this.pictureBox.Size = new System.Drawing.Size(821, 649);
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
