@@ -119,7 +119,6 @@ namespace Scanation
         private async void PreviewBtn_Click(object sender, EventArgs e)
         {
             ClearFrames();
-            _frames.Clear();
             using (_longOperation.Start())
             {
                 previewBtn.Enabled = false;
@@ -150,6 +149,7 @@ namespace Scanation
                 var suppression = 2;
                 pictureBox.Invoke(new MethodInvoker(() =>
                 {
+                    ClearFrames();
                     FaceDetector.ExtractFaces(
                             new ImageProcessor((Bitmap)pictureBox.Image).GrayScale().EqualizeHistogram().Result,
                             FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel, suppression))
@@ -293,16 +293,7 @@ namespace Scanation
             using (_longOperation.Start())
             {
                 CURRENT_TAB = tabControl1.SelectedIndex;
-                await Task.Run(() =>
-                {
-                    foreach (var frame in _frames)
-                    {
-                        frame.Dispose();
-                    }
-
-                    pictureBox.Invalidate();
-                    _frames.Clear();
-                });
+                ClearFrames();
                 removeFrameBtn.Enabled = false;
                 btnRemoveDrop2.Enabled = false;
 
@@ -347,8 +338,7 @@ namespace Scanation
                 frame.Dispose();
             }
             pictureBox.Invalidate();
+            _frames.Clear();
         }
-
-        
     }
 }
