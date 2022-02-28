@@ -11,9 +11,10 @@ namespace Scanation.Utils.FaceUtils.Types
         public int MinimumSize { get; private set; }
 
         public bool IsValid { get; private set; }
+        public int Suppression { get; private set; }
 
         private FaceDetectorParameters(float scalingFactor, int minimumSize, ObjectDetectorScalingMode objectDetectorScalingMode,
-            ObjectDetectorSearchMode objectDetectorSearchMode, bool useParallelProcessing, bool isValid)
+            ObjectDetectorSearchMode objectDetectorSearchMode, bool useParallelProcessing, bool isValid, int suppression)
         {
             ScalingFactor = scalingFactor;
             MinimumSize = minimumSize;
@@ -21,10 +22,11 @@ namespace Scanation.Utils.FaceUtils.Types
             SearchMode = objectDetectorSearchMode;
             UseParallelProcessing = useParallelProcessing;
             IsValid = isValid;
+            Suppression = suppression;
         }
 
         public static FaceDetectorParameters Create(float scalingFactor, int minimumSize, ObjectDetectorScalingMode objectDetectorScalingMode,
-            ObjectDetectorSearchMode objectDetectorSearchMode, bool useParallelProcessing) =>
-                new FaceDetectorParameters(scalingFactor, minimumSize, objectDetectorScalingMode, objectDetectorSearchMode, useParallelProcessing, true);
+            ObjectDetectorSearchMode objectDetectorSearchMode, bool useParallelProcessing, int suppression) =>
+                new FaceDetectorParameters(scalingFactor, minimumSize, objectDetectorScalingMode, objectDetectorSearchMode, useParallelProcessing, true, suppression);
     }
 }

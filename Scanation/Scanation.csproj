@@ -160,6 +160,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="btnClose1.PNG" />
+    <Content Include="btnClose2.PNG" />
+    <Content Include="btnPreScan.PNG" />
+    <Content Include="btnPreview.PNG" />
+    <Content Include="btnScan.PNG" />
     <Content Include="Capture.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
