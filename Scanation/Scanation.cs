@@ -63,7 +63,8 @@ namespace Scanation
                     using (_longOperation.Start())
                     {
                         if (pictureBox.Image == null) return;
-                        var check = int.TryParse(dpiTb1.Text, out var size);
+                        var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
+                        var check = int.TryParse(text, out var size);
                         if (!check) return;
                         if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
                         {
@@ -267,7 +268,12 @@ namespace Scanation
             
         }
 
-        private async void DpiTb_TextChanged(object sender, EventArgs e)
+        private void DpiTb_TextChanged(object sender, EventArgs e)
+        {
+            _dpiChangeAssistant?.TextChanged();
+        }
+
+        private void DpiTb2_TextChanged(object sender, EventArgs e)
         {
             _dpiChangeAssistant?.TextChanged();
         }
@@ -342,5 +348,7 @@ namespace Scanation
             }
             pictureBox.Invalidate();
         }
+
+        
     }
 }
