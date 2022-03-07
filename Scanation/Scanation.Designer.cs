@@ -121,7 +121,7 @@
             this.dpiTb1.Name = "dpiTb1";
             this.dpiTb1.Size = new System.Drawing.Size(395, 37);
             this.dpiTb1.TabIndex = 36;
-            this.dpiTb1.TextChanged += new System.EventHandler(this.DpiTb_TextChanged);
+            this.dpiTb1.TextChanged += new System.EventHandler(this.DpiTb1_TextChanged);
             this.dpiTb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DpiTb_KeyPress);
             // 
             // removeFrameBtn

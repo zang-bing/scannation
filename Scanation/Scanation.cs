@@ -268,14 +268,16 @@ namespace Scanation
             
         }
 
-        private void DpiTb_TextChanged(object sender, EventArgs e)
+        private void DpiTb1_TextChanged(object sender, EventArgs e)
         {
             _dpiChangeAssistant?.TextChanged();
+            dpiTb2.Text = dpiTb1.Text;
         }
 
         private void DpiTb2_TextChanged(object sender, EventArgs e)
         {
             _dpiChangeAssistant?.TextChanged();
+            dpiTb1.Text = dpiTb2.Text;
         }
 
         private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)
