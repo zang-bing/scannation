@@ -60,22 +60,19 @@ namespace Scanation
             {
                 this.Invoke(new MethodInvoker(async () =>
                 {
-                    using (_longOperation.Start())
+                    if (pictureBox.Image == null) return;
+                    var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
+                    var check = int.TryParse(text, out var size);
+                    if (!check) return;
+                    if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
                     {
-                        if (pictureBox.Image == null) return;
-                        var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
-                        var check = int.TryParse(text, out var size);
-                        if (!check) return;
-                        if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
-                        {
-                            return;
-                        }
-                        var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
-                        if (newImage == null) return;
-                        pictureBox.Image = newImage;
-                        ClearFrames();
-                        await DetectFaces();
+                        return;
                     }
+                    var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
+                    if (newImage == null) return;
+                    pictureBox.Image = newImage;
+                    ClearFrames();
+                    await DetectFaces();
                 }));
             };
         }
@@ -119,22 +116,19 @@ namespace Scanation
         private async void PreviewBtn_Click(object sender, EventArgs e)
         {
             ClearFrames();
-            using (_longOperation.Start())
-            {
-                previewBtn.Enabled = false;
-                var bitmap = await ImageUtils.FromUrl(url);
-                _initialImage = (Bitmap) bitmap.Clone();
-                //pictureBox.Image = bitmap;
-                var size = int.Parse(dpiTb1.Text);
-                    pictureBox.Invoke(new MethodInvoker(() =>
-                    {
-                        pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
-                    }));
+            previewBtn.Enabled = false;
+            var bitmap = await ImageUtils.FromUrl(url);
+            _initialImage = (Bitmap) bitmap.Clone();
+            //pictureBox.Image = bitmap;
+            var size = int.Parse(dpiTb1.Text);
+                pictureBox.Invoke(new MethodInvoker(() =>
+                {
+                    pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+                }));
 
-                EnableComponents();
-                await DetectFaces();
-                previewBtn.Enabled = true;
-            }
+            EnableComponents();
+            await DetectFaces();
+            previewBtn.Enabled = true;
         }
 
         private async Task DetectFaces()
@@ -292,23 +286,20 @@ namespace Scanation
 
         private async void TabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            using (_longOperation.Start())
+            CURRENT_TAB = tabControl1.SelectedIndex;
+            ClearFrames();
+            removeFrameBtn.Enabled = false;
+            btnRemoveDrop2.Enabled = false;
+
+            if (_initialImage != null)
             {
-                CURRENT_TAB = tabControl1.SelectedIndex;
-                ClearFrames();
-                removeFrameBtn.Enabled = false;
-                btnRemoveDrop2.Enabled = false;
+                await DetectFaces();
+            }
 
-                if (_initialImage != null)
-                {
-                    await DetectFaces();
-                }
-
-                if (_frames.Count > 0)
-                {
-                    removeFrameBtn.Enabled = true;
-                    btnRemoveDrop2.Enabled = true;
-                }
+            if (_frames.Count > 0)
+            {
+                removeFrameBtn.Enabled = true;
+                btnRemoveDrop2.Enabled = true;
             }
         }
 
