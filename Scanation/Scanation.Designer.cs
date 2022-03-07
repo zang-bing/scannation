@@ -44,7 +44,7 @@
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxId2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.btnRemoveDrop2 = new System.Windows.Forms.Button();
             this.btnAddDrop2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxName2 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.decisionBtn = new System.Windows.Forms.Button();
             this.previewBtn = new System.Windows.Forms.Button();
@@ -80,11 +80,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(99, 110);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.tabControl1.Location = new System.Drawing.Point(74, 89);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1064, 764);
+            this.tabControl1.Size = new System.Drawing.Size(798, 621);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl1_Selecting);
             // 
@@ -103,11 +103,11 @@
             this.tabPage1.Controls.Add(this.textBoxId);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft PhagsPa", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1056, 730);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(790, 591);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "遺影";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -116,10 +116,10 @@
             // 
             this.dpiTb1.Enabled = false;
             this.dpiTb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpiTb1.Location = new System.Drawing.Point(393, 453);
-            this.dpiTb1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dpiTb1.Location = new System.Drawing.Point(295, 368);
+            this.dpiTb1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dpiTb1.Name = "dpiTb1";
-            this.dpiTb1.Size = new System.Drawing.Size(395, 37);
+            this.dpiTb1.Size = new System.Drawing.Size(297, 31);
             this.dpiTb1.TabIndex = 36;
             this.dpiTb1.TextChanged += new System.EventHandler(this.DpiTb_TextChanged);
             this.dpiTb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DpiTb_KeyPress);
@@ -132,10 +132,10 @@
             this.removeFrameBtn.FlatAppearance.BorderSize = 2;
             this.removeFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.removeFrameBtn.Location = new System.Drawing.Point(824, 591);
-            this.removeFrameBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.removeFrameBtn.Location = new System.Drawing.Point(618, 480);
+            this.removeFrameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removeFrameBtn.Name = "removeFrameBtn";
-            this.removeFrameBtn.Size = new System.Drawing.Size(172, 46);
+            this.removeFrameBtn.Size = new System.Drawing.Size(129, 37);
             this.removeFrameBtn.TabIndex = 7;
             this.removeFrameBtn.Text = "選択枠を削除";
             this.removeFrameBtn.UseVisualStyleBackColor = true;
@@ -149,10 +149,10 @@
             this.addFrameBtn.FlatAppearance.BorderSize = 2;
             this.addFrameBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addFrameBtn.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.addFrameBtn.Location = new System.Drawing.Point(567, 591);
-            this.addFrameBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.addFrameBtn.Location = new System.Drawing.Point(425, 480);
+            this.addFrameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addFrameBtn.Name = "addFrameBtn";
-            this.addFrameBtn.Size = new System.Drawing.Size(172, 46);
+            this.addFrameBtn.Size = new System.Drawing.Size(129, 37);
             this.addFrameBtn.TabIndex = 6;
             this.addFrameBtn.Text = "選択枠を追加";
             this.addFrameBtn.UseVisualStyleBackColor = true;
@@ -163,10 +163,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(27, 457);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(20, 371);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 32);
+            this.label1.Size = new System.Drawing.Size(75, 25);
             this.label1.TabIndex = 35;
             this.label1.Text = "解像度";
             // 
@@ -175,10 +174,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft PhagsPa", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(819, 462);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(614, 375);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 25);
+            this.label2.Size = new System.Drawing.Size(31, 20);
             this.label2.TabIndex = 34;
             this.label2.Text = "dpi";
             // 
@@ -187,10 +185,10 @@
             this.printDevicesCb1.Enabled = false;
             this.printDevicesCb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printDevicesCb1.FormattingEnabled = true;
-            this.printDevicesCb1.Location = new System.Drawing.Point(393, 363);
-            this.printDevicesCb1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.printDevicesCb1.Location = new System.Drawing.Point(295, 295);
+            this.printDevicesCb1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.printDevicesCb1.Name = "printDevicesCb1";
-            this.printDevicesCb1.Size = new System.Drawing.Size(395, 38);
+            this.printDevicesCb1.Size = new System.Drawing.Size(297, 33);
             this.printDevicesCb1.TabIndex = 3;
             // 
             // button11
@@ -200,10 +198,10 @@
             this.button11.FlatAppearance.BorderSize = 2;
             this.button11.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button11.Location = new System.Drawing.Point(824, 363);
-            this.button11.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button11.Location = new System.Drawing.Point(618, 295);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(172, 39);
+            this.button11.Size = new System.Drawing.Size(129, 32);
             this.button11.TabIndex = 4;
             this.button11.Text = "選択";
             this.button11.UseVisualStyleBackColor = true;
@@ -213,10 +211,9 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(27, 367);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(20, 298);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 32);
+            this.label8.Size = new System.Drawing.Size(90, 25);
             this.label8.TabIndex = 30;
             this.label8.Text = "ディバイス";
             // 
@@ -225,29 +222,28 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label9.Location = new System.Drawing.Point(823, 217);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(617, 176);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 32);
+            this.label9.Size = new System.Drawing.Size(33, 25);
             this.label9.TabIndex = 29;
             this.label9.Text = "家";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(33, 169);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.textBoxName.Location = new System.Drawing.Point(25, 137);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(755, 123);
+            this.textBoxName.Size = new System.Drawing.Size(567, 101);
             this.textBoxName.TabIndex = 2;
             // 
             // textBoxId
             // 
             this.textBoxId.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxId.Location = new System.Drawing.Point(159, 70);
-            this.textBoxId.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.textBoxId.Location = new System.Drawing.Point(119, 57);
+            this.textBoxId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(836, 37);
+            this.textBoxId.Size = new System.Drawing.Size(628, 31);
             this.textBoxId.TabIndex = 1;
             // 
             // label10
@@ -255,16 +251,15 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label10.Location = new System.Drawing.Point(27, 70);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(20, 57);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 32);
+            this.label10.Size = new System.Drawing.Size(59, 25);
             this.label10.TabIndex = 26;
             this.label10.Text = "コード";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.textBoxId2);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label13);
@@ -275,35 +270,34 @@
             this.tabPage2.Controls.Add(this.btnRemoveDrop2);
             this.tabPage2.Controls.Add(this.btnAddDrop2);
             this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.textBoxName2);
             this.tabPage2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1056, 730);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(790, 591);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "メモリアル";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxId2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(159, 70);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(836, 37);
-            this.textBox1.TabIndex = 55;
+            this.textBoxId2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxId2.Location = new System.Drawing.Point(119, 57);
+            this.textBoxId2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxId2.Name = "textBoxId2";
+            this.textBoxId2.Size = new System.Drawing.Size(628, 31);
+            this.textBoxId2.TabIndex = 55;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label11.Location = new System.Drawing.Point(27, 457);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(20, 371);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 32);
+            this.label11.Size = new System.Drawing.Size(75, 25);
             this.label11.TabIndex = 54;
             this.label11.Text = "解像度";
             // 
@@ -312,10 +306,9 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Historic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label12.Location = new System.Drawing.Point(819, 462);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(614, 375);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 25);
+            this.label12.Size = new System.Drawing.Size(34, 20);
             this.label12.TabIndex = 53;
             this.label12.Text = "dpi";
             // 
@@ -324,10 +317,9 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label13.Location = new System.Drawing.Point(27, 367);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(20, 298);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(123, 32);
+            this.label13.Size = new System.Drawing.Size(90, 25);
             this.label13.TabIndex = 52;
             this.label13.Text = "ディバイス";
             // 
@@ -336,10 +328,9 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label14.Location = new System.Drawing.Point(823, 217);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(617, 176);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 32);
+            this.label14.Size = new System.Drawing.Size(33, 25);
             this.label14.TabIndex = 51;
             this.label14.Text = "家";
             // 
@@ -348,10 +339,9 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(27, 70);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(20, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 32);
+            this.label15.Size = new System.Drawing.Size(59, 25);
             this.label15.TabIndex = 50;
             this.label15.Text = "コード";
             // 
@@ -360,20 +350,20 @@
             this.printDevicesCb2.Enabled = false;
             this.printDevicesCb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printDevicesCb2.FormattingEnabled = true;
-            this.printDevicesCb2.Location = new System.Drawing.Point(393, 363);
-            this.printDevicesCb2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.printDevicesCb2.Location = new System.Drawing.Point(295, 295);
+            this.printDevicesCb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.printDevicesCb2.Name = "printDevicesCb2";
-            this.printDevicesCb2.Size = new System.Drawing.Size(395, 38);
+            this.printDevicesCb2.Size = new System.Drawing.Size(297, 33);
             this.printDevicesCb2.TabIndex = 49;
             // 
             // dpiTb2
             // 
             this.dpiTb2.Enabled = false;
             this.dpiTb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpiTb2.Location = new System.Drawing.Point(393, 453);
-            this.dpiTb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dpiTb2.Location = new System.Drawing.Point(295, 368);
+            this.dpiTb2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dpiTb2.Name = "dpiTb2";
-            this.dpiTb2.Size = new System.Drawing.Size(395, 37);
+            this.dpiTb2.Size = new System.Drawing.Size(297, 31);
             this.dpiTb2.TabIndex = 48;
             this.dpiTb2.TextChanged += new System.EventHandler(this.DpiTb2_TextChanged);
             // 
@@ -384,10 +374,10 @@
             this.btnRemoveDrop2.FlatAppearance.BorderSize = 2;
             this.btnRemoveDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnRemoveDrop2.Location = new System.Drawing.Point(824, 591);
-            this.btnRemoveDrop2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnRemoveDrop2.Location = new System.Drawing.Point(618, 480);
+            this.btnRemoveDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveDrop2.Name = "btnRemoveDrop2";
-            this.btnRemoveDrop2.Size = new System.Drawing.Size(172, 46);
+            this.btnRemoveDrop2.Size = new System.Drawing.Size(129, 37);
             this.btnRemoveDrop2.TabIndex = 7;
             this.btnRemoveDrop2.Text = "選択枠を削除";
             this.btnRemoveDrop2.UseVisualStyleBackColor = true;
@@ -400,10 +390,10 @@
             this.btnAddDrop2.FlatAppearance.BorderSize = 2;
             this.btnAddDrop2.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDrop2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddDrop2.Location = new System.Drawing.Point(567, 591);
-            this.btnAddDrop2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnAddDrop2.Location = new System.Drawing.Point(425, 480);
+            this.btnAddDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddDrop2.Name = "btnAddDrop2";
-            this.btnAddDrop2.Size = new System.Drawing.Size(172, 46);
+            this.btnAddDrop2.Size = new System.Drawing.Size(129, 37);
             this.btnAddDrop2.TabIndex = 6;
             this.btnAddDrop2.Text = "選択枠を追加";
             this.btnAddDrop2.UseVisualStyleBackColor = true;
@@ -415,22 +405,22 @@
             this.button4.FlatAppearance.BorderSize = 2;
             this.button4.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button4.Location = new System.Drawing.Point(824, 363);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button4.Location = new System.Drawing.Point(618, 295);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(172, 39);
+            this.button4.Size = new System.Drawing.Size(129, 32);
             this.button4.TabIndex = 4;
             this.button4.Text = "選択";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBoxName2
             // 
-            this.textBox3.Location = new System.Drawing.Point(33, 169);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(755, 123);
-            this.textBox3.TabIndex = 2;
+            this.textBoxName2.Location = new System.Drawing.Point(25, 137);
+            this.textBoxName2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName2.Multiline = true;
+            this.textBoxName2.Name = "textBoxName2";
+            this.textBoxName2.Size = new System.Drawing.Size(567, 101);
+            this.textBoxName2.TabIndex = 2;
             // 
             // panel5
             // 
@@ -440,10 +430,10 @@
             this.panel5.Controls.Add(this.preScanBtn);
             this.panel5.Controls.Add(this.closeBtn);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 875);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(0, 711);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1924, 180);
+            this.panel5.Size = new System.Drawing.Size(1443, 146);
             this.panel5.TabIndex = 1;
             // 
             // decisionBtn
@@ -461,10 +451,10 @@
             this.decisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.decisionBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.decisionBtn.Location = new System.Drawing.Point(1896, 66);
-            this.decisionBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.decisionBtn.Location = new System.Drawing.Point(1422, 54);
+            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.decisionBtn.Name = "decisionBtn";
-            this.decisionBtn.Size = new System.Drawing.Size(201, 87);
+            this.decisionBtn.Size = new System.Drawing.Size(151, 71);
             this.decisionBtn.TabIndex = 29;
             this.decisionBtn.UseVisualStyleBackColor = false;
             this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
@@ -484,10 +474,10 @@
             this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.previewBtn.Location = new System.Drawing.Point(1408, 66);
-            this.previewBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.previewBtn.Location = new System.Drawing.Point(1056, 54);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.previewBtn.Name = "previewBtn";
-            this.previewBtn.Size = new System.Drawing.Size(201, 87);
+            this.previewBtn.Size = new System.Drawing.Size(151, 71);
             this.previewBtn.TabIndex = 28;
             this.previewBtn.UseVisualStyleBackColor = false;
             this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
@@ -508,10 +498,10 @@
             this.scanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.scanBtn.Location = new System.Drawing.Point(851, 66);
-            this.scanBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.scanBtn.Location = new System.Drawing.Point(638, 54);
+            this.scanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.scanBtn.Name = "scanBtn";
-            this.scanBtn.Size = new System.Drawing.Size(201, 87);
+            this.scanBtn.Size = new System.Drawing.Size(151, 71);
             this.scanBtn.TabIndex = 27;
             this.scanBtn.UseVisualStyleBackColor = false;
             this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
@@ -532,10 +522,10 @@
             this.preScanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.preScanBtn.Location = new System.Drawing.Point(352, 66);
-            this.preScanBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.preScanBtn.Location = new System.Drawing.Point(264, 54);
+            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.preScanBtn.Name = "preScanBtn";
-            this.preScanBtn.Size = new System.Drawing.Size(201, 87);
+            this.preScanBtn.Size = new System.Drawing.Size(151, 71);
             this.preScanBtn.TabIndex = 26;
             this.preScanBtn.UseVisualStyleBackColor = false;
             this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
@@ -555,10 +545,10 @@
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.closeBtn.Location = new System.Drawing.Point(-174, 66);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBtn.Location = new System.Drawing.Point(-130, 54);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(201, 87);
+            this.closeBtn.Size = new System.Drawing.Size(151, 71);
             this.closeBtn.TabIndex = 25;
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -570,10 +560,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Location = new System.Drawing.Point(1196, 142);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(897, 115);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 798);
+            this.panel1.Size = new System.Drawing.Size(821, 649);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox
@@ -582,9 +572,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1095, 799);
+            this.pictureBox.Size = new System.Drawing.Size(821, 649);
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
@@ -593,10 +582,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(16, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(12, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 36);
+            this.label3.Size = new System.Drawing.Size(142, 29);
             this.label3.TabIndex = 37;
             this.label3.Text = "Scannation";
             // 
@@ -605,25 +593,24 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(2035, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(1526, 25);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(252, 78);
+            this.pictureBox1.Size = new System.Drawing.Size(189, 63);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
             // 
             // Scanation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1443, 857);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Scanation";
             this.Text = "Scanation";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -666,7 +653,7 @@
         private System.Windows.Forms.Button btnRemoveDrop2;
         private System.Windows.Forms.Button btnAddDrop2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxName2;
         private System.Windows.Forms.TextBox dpiTb1;
         private System.Windows.Forms.TextBox dpiTb2;
         private System.Windows.Forms.Panel panel1;
@@ -679,7 +666,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxId2;
     }
 }
 

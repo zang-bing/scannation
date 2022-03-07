@@ -34,7 +34,9 @@ namespace Scanation
             InitializeOthers();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             textBoxId.Text = id;
+            textBoxId2.Text = id;
             textBoxName.Text = name;
+            textBoxName2.Text = name;
             this.url = "http://" + url;
         }
 
