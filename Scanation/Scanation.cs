@@ -52,8 +52,9 @@ namespace Scanation
 
             printDevicesCb1.DataSource = listDevices;
             printDevicesCb2.DataSource = listDevices;
-            dpiTb1.Text = $@"{Constants.MIN_DPI * 20}";
-            dpiTb2.Text = $@"{Constants.MIN_DPI * 20}";
+            const int initialDpi = Constants.MIN_DPI * 20;
+            dpiTb1.Text = $@"{initialDpi}";
+            dpiTb2.Text = $@"{initialDpi}";
 
             _dpiChangeAssistant = new TypeAssistant();
             _dpiChangeAssistant.Idled += (sender, args) =>
@@ -63,10 +64,9 @@ namespace Scanation
                     if (pictureBox.Image == null) return;
                     var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
                     var check = int.TryParse(text, out var size);
-                    if (!check) return;
-                    if (size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                    if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
                     {
-                        return;
+                        size = initialDpi;
                     }
                     var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
                     if (newImage == null) return;
