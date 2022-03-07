@@ -124,13 +124,16 @@
   <data name="btnClose1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\btnClose1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\btnPreview.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnClose2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\btnClose2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnScan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\btnScan.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnClose2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\btnClose2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\btnPreview.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Capture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Capture.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

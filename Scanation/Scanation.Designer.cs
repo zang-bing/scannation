@@ -57,22 +57,24 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBoxName2 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.decisionBtn = new System.Windows.Forms.Button();
             this.previewBtn = new System.Windows.Forms.Button();
             this.scanBtn = new System.Windows.Forms.Button();
             this.preScanBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,9 +106,9 @@
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft PhagsPa", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(790, 591);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "遺影";
@@ -117,7 +119,7 @@
             this.dpiTb1.Enabled = false;
             this.dpiTb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpiTb1.Location = new System.Drawing.Point(295, 368);
-            this.dpiTb1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dpiTb1.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb1.Name = "dpiTb1";
             this.dpiTb1.Size = new System.Drawing.Size(297, 31);
             this.dpiTb1.TabIndex = 36;
@@ -273,9 +275,9 @@
             this.tabPage2.Controls.Add(this.textBoxName2);
             this.tabPage2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(790, 591);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "メモリアル";
@@ -361,7 +363,7 @@
             this.dpiTb2.Enabled = false;
             this.dpiTb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpiTb2.Location = new System.Drawing.Point(295, 368);
-            this.dpiTb2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dpiTb2.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb2.Name = "dpiTb2";
             this.dpiTb2.Size = new System.Drawing.Size(297, 31);
             this.dpiTb2.TabIndex = 48;
@@ -416,7 +418,7 @@
             // textBoxName2
             // 
             this.textBoxName2.Location = new System.Drawing.Point(25, 137);
-            this.textBoxName2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName2.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName2.Multiline = true;
             this.textBoxName2.Name = "textBoxName2";
             this.textBoxName2.Size = new System.Drawing.Size(567, 101);
@@ -430,11 +432,68 @@
             this.panel5.Controls.Add(this.preScanBtn);
             this.panel5.Controls.Add(this.closeBtn);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 711);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Location = new System.Drawing.Point(0, 786);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1443, 146);
+            this.panel5.Size = new System.Drawing.Size(1687, 146);
             this.panel5.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox);
+            this.panel1.Location = new System.Drawing.Point(895, 115);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(770, 647);
+            this.panel1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(12, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 29);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Scanation";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::Scanation.Properties.Resources.Capture;
+            this.pictureBox2.InitialImage = global::Scanation.Properties.Resources.Capture;
+            this.pictureBox2.Location = new System.Drawing.Point(1471, 25);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(184, 57);
+            this.pictureBox2.TabIndex = 39;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(1770, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(189, 63);
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(770, 647);
+            this.pictureBox.TabIndex = 3;
+            this.pictureBox.TabStop = false;
             // 
             // decisionBtn
             // 
@@ -451,10 +510,10 @@
             this.decisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.decisionBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.decisionBtn.Location = new System.Drawing.Point(1422, 54);
-            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.decisionBtn.Location = new System.Drawing.Point(1514, 82);
+            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
             this.decisionBtn.Name = "decisionBtn";
-            this.decisionBtn.Size = new System.Drawing.Size(151, 71);
+            this.decisionBtn.Size = new System.Drawing.Size(151, 43);
             this.decisionBtn.TabIndex = 29;
             this.decisionBtn.UseVisualStyleBackColor = false;
             this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
@@ -474,10 +533,10 @@
             this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.previewBtn.Location = new System.Drawing.Point(1056, 54);
-            this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.previewBtn.Location = new System.Drawing.Point(1178, 82);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
             this.previewBtn.Name = "previewBtn";
-            this.previewBtn.Size = new System.Drawing.Size(151, 71);
+            this.previewBtn.Size = new System.Drawing.Size(151, 43);
             this.previewBtn.TabIndex = 28;
             this.previewBtn.UseVisualStyleBackColor = false;
             this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
@@ -498,10 +557,10 @@
             this.scanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.scanBtn.Location = new System.Drawing.Point(638, 54);
-            this.scanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.scanBtn.Location = new System.Drawing.Point(760, 82);
+            this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.scanBtn.Name = "scanBtn";
-            this.scanBtn.Size = new System.Drawing.Size(151, 71);
+            this.scanBtn.Size = new System.Drawing.Size(151, 43);
             this.scanBtn.TabIndex = 27;
             this.scanBtn.UseVisualStyleBackColor = false;
             this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
@@ -522,10 +581,10 @@
             this.preScanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.preScanBtn.Location = new System.Drawing.Point(264, 54);
-            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.preScanBtn.Location = new System.Drawing.Point(386, 82);
+            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
             this.preScanBtn.Name = "preScanBtn";
-            this.preScanBtn.Size = new System.Drawing.Size(151, 71);
+            this.preScanBtn.Size = new System.Drawing.Size(151, 43);
             this.preScanBtn.TabIndex = 26;
             this.preScanBtn.UseVisualStyleBackColor = false;
             this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
@@ -545,72 +604,27 @@
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.closeBtn.Location = new System.Drawing.Point(-130, 54);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBtn.Location = new System.Drawing.Point(22, 82);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(151, 71);
+            this.closeBtn.Size = new System.Drawing.Size(151, 43);
             this.closeBtn.TabIndex = 25;
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Location = new System.Drawing.Point(897, 115);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(821, 649);
-            this.panel1.TabIndex = 2;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(821, 649);
-            this.pictureBox.TabIndex = 3;
-            this.pictureBox.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(12, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 29);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "Scannation";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1526, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(189, 63);
-            this.pictureBox1.TabIndex = 38;
-            this.pictureBox1.TabStop = false;
             // 
             // Scanation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1443, 857);
+            this.ClientSize = new System.Drawing.Size(1687, 932);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Scanation";
             this.Text = "Scanation";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -621,8 +635,9 @@
             this.tabPage2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,6 +682,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBoxId2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
