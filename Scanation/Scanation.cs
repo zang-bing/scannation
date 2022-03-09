@@ -34,7 +34,9 @@ namespace Scanation
             InitializeOthers();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             textBoxId.Text = id;
+            textBoxId2.Text = id;
             textBoxName.Text = name;
+            textBoxName2.Text = name;
             this.url = "http://" + url;
         }
 
@@ -142,32 +144,40 @@ namespace Scanation
                 var searchMode = ObjectDetectorSearchMode.Average;
                 var parallel = true;
                 var suppression = 2;
+
+
+                if (int.Parse(dpiTb1.Text) >= 2000) suppression = 5;
+                if (int.Parse(dpiTb2.Text) >= 2000) suppression = 5;
                 pictureBox.Invoke(new MethodInvoker(() =>
                 {
                     ClearFrames();
-                    FaceDetector.ExtractFaces(
+                    var faces = FaceDetector.ExtractFaces(
                             new ImageProcessor((Bitmap)pictureBox.Image).GrayScale().EqualizeHistogram().Result,
                             FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel, suppression))
-                        .HasElements(pictureBox.Refresh)
-                        .ForEach((face) =>
+                        .HasElements(pictureBox.Refresh);
+
+                    for (int i = 0; i < faces.Count(); i++)
+                    {
+                        if (CURRENT_TAB == 0 && _frames.Count != 1 && i == 2)
                         {
-                            if (CURRENT_TAB == 0 && _frames.Count != 1)
-                            {
-                                var sizableRect = new FrameSelection(face.FaceRectangle);
-                                _initalFramePos += 10;
-                                sizableRect.SetPictureBox(pictureBox);
-                                _frames.Add(sizableRect);
-                                pictureBox.Invalidate();
-                            }
-                            if (CURRENT_TAB == 1)
-                            {
-                                var sizableRect = new FrameSelection(face.FaceRectangle);
-                                _initalFramePos += 10;
-                                sizableRect.SetPictureBox(pictureBox);
-                                _frames.Add(sizableRect);
-                                pictureBox.Invalidate();
-                            }
-                        });
+                            if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
+                            var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
+                            _initalFramePos += 10;
+                            sizableRect.SetPictureBox(pictureBox);
+                            _frames.Add(sizableRect);
+                            pictureBox.Invalidate();
+                        }
+                        if (CURRENT_TAB == 1)
+                        {
+                            if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
+                            var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
+                            _initalFramePos += 10;
+                            sizableRect.SetPictureBox(pictureBox);
+                            _frames.Add(sizableRect);
+                            pictureBox.Invalidate();
+                        }
+                    }
+
                     if (_frames.Count > 0)
                     {
                         removeFrameBtn.Enabled = true;
