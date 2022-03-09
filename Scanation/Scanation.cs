@@ -66,8 +66,9 @@ namespace Scanation
                     var check = int.TryParse(text, out var size);
                     if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
                     {
-                        size = initialDpi;
+                        size = pictureBox.ClientSize.Width;
                     }
+
                     var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
                     if (newImage == null) return;
                     pictureBox.Image = newImage;
@@ -121,10 +122,10 @@ namespace Scanation
             _initialImage = (Bitmap) bitmap.Clone();
             //pictureBox.Image = bitmap;
             var size = int.Parse(dpiTb1.Text);
-                pictureBox.Invoke(new MethodInvoker(() =>
-                {
-                    pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
-                }));
+            pictureBox.Invoke(new MethodInvoker(() =>
+            {
+                pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+            }));
 
             EnableComponents();
             await DetectFaces();
