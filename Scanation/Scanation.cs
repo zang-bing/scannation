@@ -143,11 +143,11 @@ namespace Scanation
                 var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
                 var searchMode = ObjectDetectorSearchMode.Average;
                 var parallel = true;
-                var suppression = 2;
+                var suppression = 5;
 
 
-                if (int.Parse(dpiTb1.Text) >= 2000) suppression = 5;
-                if (int.Parse(dpiTb2.Text) >= 2000) suppression = 5;
+                if (int.Parse(dpiTb1.Text) >= 2000) suppression = 10;
+                if (int.Parse(dpiTb2.Text) >= 2000) suppression = 10;
                 pictureBox.Invoke(new MethodInvoker(() =>
                 {
                     ClearFrames();

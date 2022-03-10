@@ -57,24 +57,24 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBoxName2 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.decisionBtn = new System.Windows.Forms.Button();
             this.previewBtn = new System.Windows.Forms.Button();
             this.scanBtn = new System.Windows.Forms.Button();
             this.preScanBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -438,6 +438,119 @@
             this.panel5.Size = new System.Drawing.Size(1687, 146);
             this.panel5.TabIndex = 1;
             // 
+            // decisionBtn
+            // 
+            this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.decisionBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.decisionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.decisionBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.BorderSize = 0;
+            this.decisionBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.decisionBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.decisionBtn.Location = new System.Drawing.Point(1514, 82);
+            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.decisionBtn.Name = "decisionBtn";
+            this.decisionBtn.Size = new System.Drawing.Size(151, 43);
+            this.decisionBtn.TabIndex = 29;
+            this.decisionBtn.TabStop = false;
+            this.decisionBtn.Text = "決定";
+            this.decisionBtn.UseVisualStyleBackColor = false;
+            this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
+            // 
+            // previewBtn
+            // 
+            this.previewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.previewBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.previewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previewBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.previewBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.BorderSize = 0;
+            this.previewBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previewBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.previewBtn.Location = new System.Drawing.Point(1178, 82);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.previewBtn.Name = "previewBtn";
+            this.previewBtn.Size = new System.Drawing.Size(151, 43);
+            this.previewBtn.TabIndex = 28;
+            this.previewBtn.Text = "プレビュー";
+            this.previewBtn.UseVisualStyleBackColor = false;
+            this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
+            // 
+            // scanBtn
+            // 
+            this.scanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.scanBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.scanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.scanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.scanBtn.Enabled = false;
+            this.scanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.BorderSize = 0;
+            this.scanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scanBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.scanBtn.Location = new System.Drawing.Point(760, 82);
+            this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.scanBtn.Name = "scanBtn";
+            this.scanBtn.Size = new System.Drawing.Size(151, 43);
+            this.scanBtn.TabIndex = 27;
+            this.scanBtn.Text = "スキャン";
+            this.scanBtn.UseVisualStyleBackColor = false;
+            this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
+            // 
+            // preScanBtn
+            // 
+            this.preScanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.preScanBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.preScanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.preScanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.preScanBtn.Enabled = false;
+            this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.BorderSize = 0;
+            this.preScanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.preScanBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.preScanBtn.Location = new System.Drawing.Point(386, 82);
+            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.preScanBtn.Name = "preScanBtn";
+            this.preScanBtn.Size = new System.Drawing.Size(151, 43);
+            this.preScanBtn.TabIndex = 26;
+            this.preScanBtn.Text = "プレスキャン";
+            this.preScanBtn.UseVisualStyleBackColor = false;
+            this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.closeBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.BorderSize = 0;
+            this.closeBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBtn.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.closeBtn.Location = new System.Drawing.Point(22, 82);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(151, 43);
+            this.closeBtn.TabIndex = 25;
+            this.closeBtn.Text = "閉じる";
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -450,6 +563,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(770, 647);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(770, 647);
+            this.pictureBox.TabIndex = 3;
+            this.pictureBox.TabStop = false;
             // 
             // label3
             // 
@@ -467,7 +591,7 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::Scanation.Properties.Resources.Capture;
             this.pictureBox2.InitialImage = global::Scanation.Properties.Resources.Capture;
-            this.pictureBox2.Location = new System.Drawing.Point(1471, 25);
+            this.pictureBox2.Location = new System.Drawing.Point(1476, 25);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(184, 57);
             this.pictureBox2.TabIndex = 39;
@@ -483,134 +607,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(189, 63);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(770, 647);
-            this.pictureBox.TabIndex = 3;
-            this.pictureBox.TabStop = false;
-            // 
-            // decisionBtn
-            // 
-            this.decisionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.decisionBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.decisionBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose2;
-            this.decisionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.decisionBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.decisionBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.decisionBtn.FlatAppearance.BorderSize = 0;
-            this.decisionBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.decisionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.decisionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.decisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.decisionBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.decisionBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.decisionBtn.Location = new System.Drawing.Point(1514, 82);
-            this.decisionBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.decisionBtn.Name = "decisionBtn";
-            this.decisionBtn.Size = new System.Drawing.Size(151, 43);
-            this.decisionBtn.TabIndex = 29;
-            this.decisionBtn.UseVisualStyleBackColor = false;
-            this.decisionBtn.Click += new System.EventHandler(this.DecisionBtn_Click);
-            // 
-            // previewBtn
-            // 
-            this.previewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.previewBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.previewBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreview;
-            this.previewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.previewBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.previewBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.previewBtn.FlatAppearance.BorderSize = 0;
-            this.previewBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.previewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.previewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previewBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previewBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.previewBtn.Location = new System.Drawing.Point(1178, 82);
-            this.previewBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.previewBtn.Name = "previewBtn";
-            this.previewBtn.Size = new System.Drawing.Size(151, 43);
-            this.previewBtn.TabIndex = 28;
-            this.previewBtn.UseVisualStyleBackColor = false;
-            this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
-            // 
-            // scanBtn
-            // 
-            this.scanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.scanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.scanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnScan;
-            this.scanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.scanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.scanBtn.Enabled = false;
-            this.scanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scanBtn.FlatAppearance.BorderSize = 0;
-            this.scanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.scanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.scanBtn.Location = new System.Drawing.Point(760, 82);
-            this.scanBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.scanBtn.Name = "scanBtn";
-            this.scanBtn.Size = new System.Drawing.Size(151, 43);
-            this.scanBtn.TabIndex = 27;
-            this.scanBtn.UseVisualStyleBackColor = false;
-            this.scanBtn.Click += new System.EventHandler(this.OnScanBtn_Click);
-            // 
-            // preScanBtn
-            // 
-            this.preScanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.preScanBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.preScanBtn.BackgroundImage = global::Scanation.Properties.Resources.btnPreScan;
-            this.preScanBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.preScanBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.preScanBtn.Enabled = false;
-            this.preScanBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.preScanBtn.FlatAppearance.BorderSize = 0;
-            this.preScanBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.preScanBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.preScanBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.preScanBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preScanBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.preScanBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.preScanBtn.Location = new System.Drawing.Point(386, 82);
-            this.preScanBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.preScanBtn.Name = "preScanBtn";
-            this.preScanBtn.Size = new System.Drawing.Size(151, 43);
-            this.preScanBtn.TabIndex = 26;
-            this.preScanBtn.UseVisualStyleBackColor = false;
-            this.preScanBtn.Click += new System.EventHandler(this.PreScanBtn_Click);
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.closeBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.closeBtn.BackgroundImage = global::Scanation.Properties.Resources.btnClose1;
-            this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBtn.FlatAppearance.BorderSize = 0;
-            this.closeBtn.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.closeBtn.Location = new System.Drawing.Point(22, 82);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(151, 43);
-            this.closeBtn.TabIndex = 25;
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // Scanation
             // 
@@ -635,9 +631,9 @@
             this.tabPage2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
