@@ -3,12 +3,34 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Scanation
 {
     internal static class Program
     {
+        static void RegisterURLProtocol(string protocolName, string applicationPath)
+        {
+            try
+            {
+                if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
+                {
+                    // Create new key for desired URL protocol
+                    var keyTest = Registry.CurrentUser.OpenSubKey("Software", true)?.OpenSubKey("Classes", true);
+                    var key = keyTest?.CreateSubKey(protocolName);
+                    key?.SetValue("URL Protocol", protocolName);
+                    //key.CreateSubKey(@"shell\open\command").SetValue("", "\"" + applicationPath + "\"");
+                    key?.CreateSubKey(@"shell\open\command")?.SetValue("", "\"" + applicationPath + "\" \"%1\"");
+                    MessageBox.Show("Protocol created");
+                    return;
+                }
+
+                MessageBox.Show("Registry is not defined");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,31 +39,22 @@ namespace Scanation
         {
             try
             {
-                var protocol = @"Software\HiroSyasin\Scanation";
+                var protocol = @"Software\Classes\Scanation";
+                var programPath = Path.Combine(
+                    Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                    System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
                 var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-                var arg = "scannation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
-                var url = arg.Replace("scannation://", "");
+                var arg = "scanation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
+                var url = arg.Replace("scanation://", "");
 
-                if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
-                {
-                    var key = Registry.CurrentUser.CreateSubKey(protocol);
-
-                    key.SetValue("", $"URL:{protocol} Protocol");
-                    key.SetValue("URL Protocol", "");
-                    var subKey = key.CreateSubKey(@"shell\open\command");
-                    var execPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-
-                    subKey.SetValue("", $"{execPath} %1");
-                    subKey.Close();
-                    key.Close();
-
-
+                
+                RegisterURLProtocol("scanation", programPath);
 #if DEBUG
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Scanation(url));
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Scanation(url));
 #else
                 if (args.Any())
                 {
@@ -54,13 +67,8 @@ namespace Scanation
                     Application.Run(new Scanation(orderId, name, url));
                 }
 #endif
-                    MessageBox.Show("Application runnig...!");
-                }
-                else
-                {
-                    MessageBox.Show("Regitry is not defined ...!");
-                }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
