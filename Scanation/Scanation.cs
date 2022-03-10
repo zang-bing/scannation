@@ -241,7 +241,7 @@ namespace Scanation
                 btnRemoveDrop2.Enabled = true;
             }
         }
-        private void RemoveFrameBtn_Click(object sender, EventArgs e)
+        private void RemoveFrameBtn1_Click(object sender, EventArgs e)
         {
             FrameSelection currentFrame = null;
             foreach (var frame in _frames.Where(frame => frame.Selected))
@@ -252,10 +252,27 @@ namespace Scanation
             pictureBox.Invalidate();
 
             if (currentFrame != null) _frames.Remove(currentFrame);
+            
 
             if (_frames.Count <= 0)
             {
                 removeFrameBtn.Enabled = false;
+            }
+        }
+
+        private void RemoveFrameBtn2_Click(object sender, EventArgs e)
+        {
+            _frames.RemoveAll(frame =>
+            {
+                var selected = frame.Selected;
+                if (selected) frame.Dispose();
+                return selected;
+            });
+            pictureBox.Invalidate();
+
+            if (_frames.Count <= 0)
+            {
+                btnRemoveDrop2.Enabled = false;
             }
         }
 
@@ -311,27 +328,6 @@ namespace Scanation
             {
                 removeFrameBtn.Enabled = true;
                 btnRemoveDrop2.Enabled = true;
-            }
-        }
-
-        private void BtnRemoveDrop2_Click(object sender, EventArgs e)
-        {
-            FrameSelection currentFrame = null;
-            foreach (var frame in _frames)
-            {
-                if (frame.Selected)
-                {
-                    frame.Dispose();
-                    currentFrame = frame;
-                }
-            }
-            pictureBox.Invalidate();
-
-            if (currentFrame != null) _frames.Remove(currentFrame);
-
-            if (_frames.Count <= 0)
-            {
-                btnRemoveDrop2.Enabled = false;
             }
         }
 

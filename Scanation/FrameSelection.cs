@@ -8,7 +8,7 @@ namespace Scanation
     {
         private PictureBox _pictureBox;
         public Rectangle Rect;
-        public bool allowDeformingDuringMovement = false;
+        private bool _allowDeformingDuringMovement = false;
         private bool _isClick = false;
         private bool _move = false;
         private int _oldX;
@@ -16,7 +16,7 @@ namespace Scanation
         private int _rectNodeSize = 5;
         private Bitmap _bmp = null;
         private Bitmap _selectedBmp = null;
-        private PosSizableRect nodeSelected = PosSizableRect.None;
+        private PosSizableRect _nodeSelected = PosSizableRect.None;
         public bool Selected { get; set; } = false;
 
         private enum PosSizableRect
@@ -94,18 +94,18 @@ namespace Scanation
         {
             _isClick = true;
 
-            nodeSelected = PosSizableRect.None;
-            nodeSelected = GetNodeSelectable(e.Location);
+            _nodeSelected = PosSizableRect.None;
+            _nodeSelected = GetNodeSelectable(e.Location);
 
             if (Rect.Contains(new Point(e.X, e.Y)))
             {
                 _move = true;
-                Selected = true;
+                Selected = !Selected;
             }
-            else
-            {
-                Selected = false;
-            }
+            //else
+            //{
+            //    Selected = false;
+            //}
             _oldX = e.X;
             _oldY = e.Y;
             _pictureBox.Invalidate();
@@ -115,16 +115,14 @@ namespace Scanation
         {
             _isClick = false;
             _move = false;
-            if (_pictureBox != null)
-            {
-                var bmp = new Bitmap(_pictureBox.Image);
+            if (_pictureBox == null) return;
+            var bmp = new Bitmap(_pictureBox.Image);
 
-                try
-                {
-                    _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
-                }
-                catch (Exception) { }
+            try
+            {
+                _selectedBmp = bmp.Clone(Rect, bmp.PixelFormat);
             }
+            catch (Exception) { }
         }
 
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)
@@ -135,9 +133,9 @@ namespace Scanation
                 return;
             }
 
-            Rectangle backupRect = Rect;
+            var backupRect = Rect;
 
-            switch (nodeSelected)
+            switch (_nodeSelected)
             {
                 case PosSizableRect.LeftUp:
                     Rect.X += e.X - _oldX;
@@ -180,7 +178,7 @@ namespace Scanation
                     {
                         Rect.X = Rect.X + e.X - _oldX;
                         Rect.Y = Rect.Y + e.Y - _oldY;
-                        Console.WriteLine($"{Rect.X} {Rect.Y} {Rect.Width} {Rect.Height}");
+                        // Console.WriteLine($"{Rect.X} {Rect.Y} {Rect.Width} {Rect.Height}");
                     }
                     break;
             }
@@ -208,7 +206,7 @@ namespace Scanation
             if (Rect.X + Rect.Width > _pictureBox.Width)
             {
                 Rect.Width = _pictureBox.Width - Rect.X - 1; // -1 to be still show 
-                if (allowDeformingDuringMovement == false)
+                if (_allowDeformingDuringMovement == false)
                 {
                     _isClick = false;
                 }
@@ -216,7 +214,7 @@ namespace Scanation
             if (Rect.Y + Rect.Height > _pictureBox.Height)
             {
                 Rect.Height = _pictureBox.Height - Rect.Y - 1;// -1 to be still show 
-                if (allowDeformingDuringMovement == false)
+                if (_allowDeformingDuringMovement == false)
                 {
                     _isClick = false;
                 }

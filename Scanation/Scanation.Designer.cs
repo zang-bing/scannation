@@ -141,7 +141,7 @@
             this.removeFrameBtn.TabIndex = 7;
             this.removeFrameBtn.Text = "選択枠を削除";
             this.removeFrameBtn.UseVisualStyleBackColor = true;
-            this.removeFrameBtn.Click += new System.EventHandler(this.RemoveFrameBtn_Click);
+            this.removeFrameBtn.Click += new System.EventHandler(this.RemoveFrameBtn1_Click);
             // 
             // addFrameBtn
             // 
@@ -383,7 +383,7 @@
             this.btnRemoveDrop2.TabIndex = 7;
             this.btnRemoveDrop2.Text = "選択枠を削除";
             this.btnRemoveDrop2.UseVisualStyleBackColor = true;
-            this.btnRemoveDrop2.Click += new System.EventHandler(this.BtnRemoveDrop2_Click);
+            this.btnRemoveDrop2.Click += new System.EventHandler(this.RemoveFrameBtn2_Click);
             // 
             // btnAddDrop2
             // 
