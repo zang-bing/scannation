@@ -1,0 +1,17 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\HiroSyasin\Scanation]
+
+[HKEY_CURRENT_USER\Software\HiroSyasin\Scanation\Security]
+"RegisterId"="{4E7C556F-E046-4892-94C9-7F563F6794ED}"
+
+#FTPアップロード設定
+[HKEY_CURRENT_USER\Software\HiroSyasin\Scanation\FTP]
+#サーバーアドレス
+"SERVER"="***.com"
+#FTPサーバーへログインするためのユーザーアカウント
+"USER"="***"
+#同パスワード
+"PASSWORD"="Jq3ZCsVx"
+#ログインした共有フォルダ内のパス
+"UPDIR"="/genpon/upload/"
