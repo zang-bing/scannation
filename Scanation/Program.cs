@@ -15,31 +15,33 @@ namespace Scanation
         [STAThread]
         static void Main(string[] args)
         {
-            var protocol = @"Software\HiroSyasin\Scanation";
-
-            var list = Registry.CurrentUser.GetSubKeyNames().ToList();
-
-            var arg = "scannation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
-            var url = arg.Replace("scannation://", "");
-
-            if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
+            try
             {
-                var key = Registry.CurrentUser.CreateSubKey(protocol);
+                var protocol = @"Software\HiroSyasin\Scanation";
 
-                key.SetValue("", $"URL:{protocol} Protocol");
-                key.SetValue("URL Protocol", "");
-                var subKey = key.CreateSubKey(@"shell\open\command");
-                var execPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-                subKey.SetValue("", $"{execPath} %1");
-                subKey.Close();
-                key.Close();
+                var arg = "scannation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
+                var url = arg.Replace("scannation://", "");
+
+                if (KeyExists(Registry.CurrentUser, @"Software\HiroSyasin"))
+                {
+                    var key = Registry.CurrentUser.CreateSubKey(protocol);
+
+                    key.SetValue("", $"URL:{protocol} Protocol");
+                    key.SetValue("URL Protocol", "");
+                    var subKey = key.CreateSubKey(@"shell\open\command");
+                    var execPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+
+                    subKey.SetValue("", $"{execPath} %1");
+                    subKey.Close();
+                    key.Close();
 
 
 #if DEBUG
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Scanation(url));
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new Scanation(url));
 #else
                 if (args.Any())
                 {
@@ -52,9 +54,15 @@ namespace Scanation
                     Application.Run(new Scanation(orderId, name, url));
                 }
 #endif
-            } else
+                    MessageBox.Show("Application runnig...!");
+                }
+                else
+                {
+                    MessageBox.Show("Regitry is not defined ...!");
+                }
+            } catch (Exception ex)
             {
-                MessageBox.Show("Regitry is not defined ...!");
+                MessageBox.Show(ex.Message);
             }
         }
 

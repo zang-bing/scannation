@@ -122,7 +122,7 @@
             this.dpiTb1.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb1.Name = "dpiTb1";
             this.dpiTb1.Size = new System.Drawing.Size(297, 31);
-            this.dpiTb1.TabIndex = 36;
+            this.dpiTb1.TabIndex = 5;
             this.dpiTb1.TextChanged += new System.EventHandler(this.DpiTb1_TextChanged);
             this.dpiTb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DpiTb_KeyPress);
             // 
@@ -366,7 +366,7 @@
             this.dpiTb2.Margin = new System.Windows.Forms.Padding(2);
             this.dpiTb2.Name = "dpiTb2";
             this.dpiTb2.Size = new System.Drawing.Size(297, 31);
-            this.dpiTb2.TabIndex = 48;
+            this.dpiTb2.TabIndex = 6;
             this.dpiTb2.TextChanged += new System.EventHandler(this.DpiTb2_TextChanged);
             // 
             // btnRemoveDrop2
@@ -396,7 +396,7 @@
             this.btnAddDrop2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddDrop2.Name = "btnAddDrop2";
             this.btnAddDrop2.Size = new System.Drawing.Size(129, 37);
-            this.btnAddDrop2.TabIndex = 6;
+            this.btnAddDrop2.TabIndex = 5;
             this.btnAddDrop2.Text = "選択枠を追加";
             this.btnAddDrop2.UseVisualStyleBackColor = true;
             this.btnAddDrop2.Click += new System.EventHandler(this.BtnAddDrop2_Click);

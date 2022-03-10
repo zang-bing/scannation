@@ -49,35 +49,39 @@ namespace Scanation
 
         private void InitializeOthers()
         {
-            _longOperation = new LongOperation(this, LongOperationSettings.Default);
-            var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
-
-            printDevicesCb1.DataSource = listDevices;
-            printDevicesCb2.DataSource = listDevices;
-            const int initialDpi = Constants.MIN_DPI * 20;
-            dpiTb1.Text = $@"{initialDpi}";
-            dpiTb2.Text = $@"{initialDpi}";
-
-            _dpiChangeAssistant = new TypeAssistant();
-            _dpiChangeAssistant.Idled += (sender, args) =>
+            try
             {
-                this.Invoke(new MethodInvoker(async () =>
-                {
-                    if (pictureBox.Image == null) return;
-                    var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
-                    var check = int.TryParse(text, out var size);
-                    if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
-                    {
-                        size = pictureBox.ClientSize.Width;
-                    }
+                _longOperation = new LongOperation(this, LongOperationSettings.Default);
+                var listDevices = System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
 
-                    var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
-                    if (newImage == null) return;
-                    pictureBox.Image = newImage;
-                    ClearFrames();
-                    await DetectFaces();
-                }));
-            };
+                printDevicesCb1.DataSource = listDevices;
+                printDevicesCb2.DataSource = listDevices;
+                const int initialDpi = Constants.MIN_DPI * 20;
+                dpiTb1.Text = $@"{initialDpi}";
+                dpiTb2.Text = $@"{initialDpi}";
+
+                _dpiChangeAssistant = new TypeAssistant();
+                _dpiChangeAssistant.Idled += (sender, args) =>
+                {
+                    this.Invoke(new MethodInvoker(async () =>
+                    {
+                        if (pictureBox.Image == null) return;
+                        var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
+                        var check = int.TryParse(text, out var size);
+                        if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                        {
+                            size = pictureBox.ClientSize.Width;
+                        }
+
+                        var newImage = ImageUtils.Resize(new Bitmap(_initialImage), size, size);
+                        if (newImage == null) return;
+                        pictureBox.Image = newImage;
+                        ClearFrames();
+                        await DetectFaces();
+                    }));
+                };
+            } catch (Exception ex) { }
+            
         }
 
         private async void OnScanBtn_Click(object sender, EventArgs e)
@@ -273,6 +277,7 @@ namespace Scanation
             if (_frames.Count <= 0)
             {
                 btnRemoveDrop2.Enabled = false;
+                btnAddDrop2.Focus();
             }
         }
 
@@ -292,14 +297,22 @@ namespace Scanation
 
         private void DpiTb1_TextChanged(object sender, EventArgs e)
         {
-            _dpiChangeAssistant?.TextChanged();
-            dpiTb2.Text = dpiTb1.Text;
+            try
+            {
+                _dpiChangeAssistant?.TextChanged();
+                dpiTb2.Text = dpiTb1.Text;
+            } catch (Exception ex) { }
+            
         }
 
         private void DpiTb2_TextChanged(object sender, EventArgs e)
         {
-            _dpiChangeAssistant?.TextChanged();
-            dpiTb1.Text = dpiTb2.Text;
+            try
+            {
+                _dpiChangeAssistant?.TextChanged();
+                dpiTb1.Text = dpiTb2.Text;
+            }
+            catch (Exception ex) { }
         }
 
         private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)

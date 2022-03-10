@@ -11,11 +11,14 @@ namespace Scanation.Utils
 
         public TypeAssistant(int waitingMilliseconds = 600)
         {
-            WaitingMilliseconds = waitingMilliseconds;
-            _waitingTimer = new Timer(p =>
+            try
             {
-                Idled(this, EventArgs.Empty);
-            });
+                WaitingMilliseconds = waitingMilliseconds;
+                _waitingTimer = new Timer(p =>
+                {
+                    Idled(this, EventArgs.Empty);
+                });
+            } catch (Exception ex) { }
         }
         public void TextChanged()
         {
