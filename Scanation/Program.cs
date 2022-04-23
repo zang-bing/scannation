@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Scanation
 {
@@ -39,33 +40,36 @@ namespace Scanation
         {
             try
             {
-                var protocol = @"Software\Classes\Scanation";
+                var protocol = @"Software\Classes\Scanapp";
                 var programPath = Path.Combine(
                     Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
                     System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
                 var list = Registry.CurrentUser.GetSubKeyNames().ToList();
 
-                var arg = "scanation://www.lavender.com.vn/wp-content/uploads/bi-quyet-chup-anh-gia-dinh-5-nguoi-dep-nhat-055.jpg";
-                var url = arg.Replace("scanation://", "");
-
-                
-                RegisterURLProtocol("scanation", programPath);
+                RegisterURLProtocol("scanapp", programPath);
 #if DEBUG
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Scanation(url));
 #else
                 if (args.Any())
                 {
-                    var urls = args[0].Split('?')[1].Split('&');
-                    var orderId = urls[0].Replace("id=", "");
-                    var name = urls[1].Replace("name=", "");
+                    var url = args[0].Replace("scanapp://", "");
+
+                    MatchCollection mcId = Regex.Matches(args[0], @"\bid=.*&n");
+                    var id = mcId[0].ToString().Replace("id=", "").Replace("&n", "");
+
+                    MatchCollection mcName = Regex.Matches(args[0], @"\b&name=.*&t");
+                    var name = mcName[0].ToString().Replace("&name=", "").Replace("&t", "");
+
+                    MatchCollection mcToken = Regex.Matches(args[0], @"\b&token=.*");
+                    var token = mcToken[0].ToString().Replace("&token=", "");
 
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Scanation(orderId, name, url));
+                    Application.Run(new Scanation(id, name, token, url));
                 }
+
 #endif
             }
             catch (Exception ex)

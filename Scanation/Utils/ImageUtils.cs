@@ -56,6 +56,12 @@ namespace Scanation.Utils
             return bitmap;
         }
 
+        public static async Task<Bitmap> FromPC(string path)
+        {
+            var bitmap = new Bitmap(path);
+            return bitmap;
+        }
+
         public static void Print(Bitmap bitmap, string printerName)
         {
             try
@@ -96,7 +102,7 @@ namespace Scanation.Utils
             
         }
 
-        public static void SaveToFile(Bitmap bitmap)
+        public static async void SaveToFile(Bitmap bitmap, string token)
         {
             try
             {
@@ -105,7 +111,7 @@ namespace Scanation.Utils
                 {
                     Directory.CreateDirectory(Constants.IMAGE_LOCATION);
                 }
-                var fileName = $@"{Guid.NewGuid()}.jpg";
+                var fileName = $@"{Guid.NewGuid()}.png";
                 //bitmap.Save($"{Constants.IMAGE_LOCATION}\\{fileName}", ImageFormat.Jpeg);
 
                 using (var memory = new MemoryStream())
@@ -117,6 +123,10 @@ namespace Scanation.Utils
                         fs.Write(bytes, 0, bytes.Length);
                     }
                 }
+                string bucket = "careux.printing.app";
+                string filePath = $"{Constants.IMAGE_LOCATION}\\{fileName}";
+
+                await AwsUtils.UploadFileAsync(bucket, filePath, token, fileName);
             } catch (Exception ex)
             {
                 Console.WriteLine(ex.Message, ex);

@@ -128,6 +128,7 @@ namespace Scanation
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             ChangeCursor(e.Location);
+
             if (_isClick == false)
             {
                 return;
@@ -178,7 +179,7 @@ namespace Scanation
                     {
                         Rect.X = Rect.X + e.X - _oldX;
                         Rect.Y = Rect.Y + e.Y - _oldY;
-                        // Console.WriteLine($"{Rect.X} {Rect.Y} {Rect.Width} {Rect.Height}");
+                        Console.WriteLine($"{Rect.X} {Rect.Y} {Rect.Width} {Rect.Height}");
                     }
                     break;
             }
@@ -206,18 +207,10 @@ namespace Scanation
             if (Rect.X + Rect.Width > _pictureBox.Width)
             {
                 Rect.Width = _pictureBox.Width - Rect.X - 1; // -1 to be still show 
-                if (_allowDeformingDuringMovement == false)
-                {
-                    _isClick = false;
-                }
             }
             if (Rect.Y + Rect.Height > _pictureBox.Height)
             {
                 Rect.Height = _pictureBox.Height - Rect.Y - 1;// -1 to be still show 
-                if (_allowDeformingDuringMovement == false)
-                {
-                    _isClick = false;
-                }
             }
         }
 

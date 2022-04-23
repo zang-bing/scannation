@@ -9,6 +9,7 @@ using Scanation.Utils.FaceUtils;
 using Scanation.Utils.FaceUtils.Types;
 using Accord.Vision.Detection;
 using LoadingIndicator.WinForms;
+using System.IO;
 
 namespace Scanation
 {
@@ -20,6 +21,8 @@ namespace Scanation
         private List<FrameSelection> _frames = new List<FrameSelection>();
         private int _initalFramePos = 10;
         public string url = "";
+        public bool status = false;
+        public string token = "";
 
         // constants
         private const int FRAME_SIZE = 100;
@@ -28,7 +31,7 @@ namespace Scanation
 
         private TypeAssistant _dpiChangeAssistant;
 
-        public Scanation(string id, string name, string url)
+        public Scanation(string id, string name, string token, string url)
         {
             InitializeComponent();
             InitializeOthers();
@@ -37,6 +40,7 @@ namespace Scanation
             textBoxId2.Text = id;
             textBoxName.Text = name;
             textBoxName2.Text = name;
+            this.token = token;
             this.url = "http://" + url;
         }
 
@@ -92,9 +96,10 @@ namespace Scanation
                 if (_frames.Count > 0)
                 {
                     await PrintFrames(printerName);
-                    return;
+                } else
+                {
+                    PrintPicture(printerName);
                 }
-                PrintPicture(printerName);
             }
         }
 
@@ -105,7 +110,7 @@ namespace Scanation
             var bitmap = new Bitmap(width, height);
             pictureBox.DrawToBitmap(bitmap, new Rectangle(0, 0, width, height));
             ImageUtils.Print(bitmap, printerName);
-            ImageUtils.SaveToFile(bitmap);
+            ImageUtils.SaveToFile(bitmap, token);
         }
 
         private async Task PrintFrames(string printerName)
@@ -115,80 +120,110 @@ namespace Scanation
                 foreach (var frame in _frames)
                 {
                     ImageUtils.Print(frame.SelectedBitmap, printerName);
-                    ImageUtils.SaveToFile(frame.SelectedBitmap);
+                    ImageUtils.SaveToFile(frame.SelectedBitmap, token);
                 }
             });
         }
 
         private async void PreviewBtn_Click(object sender, EventArgs e)
         {
-            ClearFrames();
-            previewBtn.Enabled = false;
-            var bitmap = await ImageUtils.FromUrl(url);
-            _initialImage = (Bitmap) bitmap.Clone();
-            //pictureBox.Image = bitmap;
-            var size = int.Parse(dpiTb1.Text);
-            pictureBox.Invoke(new MethodInvoker(() =>
+            try
             {
-                pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
-            }));
+                ClearFrames();
+                previewBtn.Enabled = false;
+                var bitmap = await ImageUtils.FromUrl(url);
+                _initialImage = (Bitmap)bitmap.Clone();
+                var text = CURRENT_TAB == 0 ? dpiTb1.Text : dpiTb2.Text;
+                var check = int.TryParse(text, out var size);
+                if (CURRENT_TAB == 0)
+                {
+                    if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                    {
+                        size = pictureBox.ClientSize.Width;
+                    }
+                    pictureBox.Invoke(new MethodInvoker(() =>
+                    {
+                        pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+                    }));
+                } else
+                {
+                    if (!check || size < Constants.MIN_DPI || size > Constants.MAX_DPI)
+                    {
+                        size = pictureBox.ClientSize.Width;
+                    }
+                    pictureBox.Invoke(new MethodInvoker(() =>
+                    {
+                        pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+                    }));
+                }
+                
+                EnableComponents();
+                await DetectFaces();
+                previewBtn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("image not found");
+                previewBtn.Enabled = true;
+            }
 
-            EnableComponents();
-            await DetectFaces();
-            previewBtn.Enabled = true;
         }
 
         private async Task DetectFaces()
         {
-            await Task.Run(() =>
+            try
             {
-                var scaleFactor = 1.1f;
-                var minSize = 5;
-                var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
-                var searchMode = ObjectDetectorSearchMode.Average;
-                var parallel = true;
-                var suppression = 5;
-
-
-                if (int.Parse(dpiTb1.Text) >= 2000) suppression = 10;
-                if (int.Parse(dpiTb2.Text) >= 2000) suppression = 10;
-                pictureBox.Invoke(new MethodInvoker(() =>
+                ClearFrames();
+                await Task.Run(() =>
                 {
-                    ClearFrames();
-                    var faces = FaceDetector.ExtractFaces(
-                            new ImageProcessor((Bitmap)pictureBox.Image).GrayScale().EqualizeHistogram().Result,
-                            FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel, suppression))
-                        .HasElements(pictureBox.Refresh);
+                    var scaleFactor = 1.1f;
+                    var minSize = 5;
+                    var scaleMode = ObjectDetectorScalingMode.GreaterToSmaller;
+                    var searchMode = ObjectDetectorSearchMode.Average;
+                    var parallel = true;
+                    var suppression = 5;
 
-                    for (int i = 0; i < faces.Count(); i++)
+                    if (int.Parse(dpiTb1.Text) > 2000) suppression = 4;
+                    if (int.Parse(dpiTb2.Text) > 2000) suppression = 4;
+                    if (int.Parse(dpiTb2.Text) >= Constants.MAX_DPI) suppression = 5;
+                    pictureBox.Invoke(new MethodInvoker(() =>
                     {
-                        if (CURRENT_TAB == 0 && _frames.Count != 1 && i == 2)
-                        {
-                            if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
-                            var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
-                            _initalFramePos += 10;
-                            sizableRect.SetPictureBox(pictureBox);
-                            _frames.Add(sizableRect);
-                            pictureBox.Invalidate();
-                        }
-                        if (CURRENT_TAB == 1)
-                        {
-                            if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
-                            var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
-                            _initalFramePos += 10;
-                            sizableRect.SetPictureBox(pictureBox);
-                            _frames.Add(sizableRect);
-                            pictureBox.Invalidate();
-                        }
-                    }
+                        var faces = FaceDetector.ExtractFaces(
+                                new ImageProcessor((Bitmap)pictureBox.Image).GrayScale().EqualizeHistogram().Result,
+                                FaceDetectorParameters.Create(scaleFactor, minSize, scaleMode, searchMode, parallel, suppression))
+                            .HasElements(pictureBox.Refresh);
 
-                    if (_frames.Count > 0)
-                    {
-                        removeFrameBtn.Enabled = true;
-                        btnRemoveDrop2.Enabled = true;
-                    }
-                }));
-            });
+                        for (int i = 0; i < faces.Count(); i++)
+                        {
+                            if (CURRENT_TAB == 0 && _frames.Count != 1 && i == 2)
+                            {
+                                if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
+                                var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
+                                _initalFramePos += 10;
+                                sizableRect.SetPictureBox(pictureBox);
+                                _frames.Add(sizableRect);
+                                pictureBox.Invalidate();
+                            }
+                            if (CURRENT_TAB == 1)
+                            {
+                                if (faces.ElementAt(i).FaceRectangle.Width < 30) return;
+                                var sizableRect = new FrameSelection(faces.ElementAt(i).FaceRectangle);
+                                _initalFramePos += 10;
+                                sizableRect.SetPictureBox(pictureBox);
+                                _frames.Add(sizableRect);
+                                pictureBox.Invalidate();
+                            }
+                        }
+
+                        if (_frames.Count > 0)
+                        {
+                            removeFrameBtn.Enabled = true;
+                            btnRemoveDrop2.Enabled = true;
+                        }
+                    }));
+                });
+            } catch (Exception ex) { }
+
         }
 
         private void EnableComponents()
@@ -202,6 +237,7 @@ namespace Scanation
             btnRemoveDrop2.Enabled = true;
             printDevicesCb2.Enabled = true;
             dpiTb2.Enabled = true;
+            btnAccept.Enabled = true;
         }
 
         private void DecisionBtn_Click(object sender, EventArgs e)
@@ -222,6 +258,7 @@ namespace Scanation
 
         private void AddFrame(int tab)
         {
+            Console.WriteLine(_frames.Count);
             if (tab == 1 && _frames.Count < 1)
             {
                 var sizableRect = new FrameSelection(new Rectangle(_initalFramePos, _initalFramePos, FRAME_SIZE, FRAME_SIZE));
@@ -299,9 +336,12 @@ namespace Scanation
         {
             try
             {
+                if (dpiTb1.Text == "") return;
                 _dpiChangeAssistant?.TextChanged();
                 dpiTb2.Text = dpiTb1.Text;
-            } catch (Exception ex) { }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
             
         }
 
@@ -309,15 +349,25 @@ namespace Scanation
         {
             try
             {
+                if (dpiTb2.Text == "") return;
                 _dpiChangeAssistant?.TextChanged();
                 dpiTb1.Text = dpiTb2.Text;
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void DpiTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            try
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void BtnAddDrop2_Click(object sender, EventArgs e)
@@ -337,6 +387,10 @@ namespace Scanation
                 await DetectFaces();
             }
 
+            if (CURRENT_TAB == 0) dpiTb1.Text = dpiTb2.Text;
+
+            if (CURRENT_TAB == 1) dpiTb2.Text = dpiTb1.Text;
+
             if (_frames.Count > 0)
             {
                 removeFrameBtn.Enabled = true;
@@ -350,8 +404,64 @@ namespace Scanation
             {
                 frame.Dispose();
             }
-            pictureBox.Invalidate();
             _frames.Clear();
+            pictureBox.Invalidate();
+        }
+
+        private async void chooseFie()
+        {
+            status = true;
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "" +
+                    "jpg files (*.jpg)|*.jpg|" +
+                    "jpeg files (*.jpeg)|*.jpeg|" +
+                    "png files (*.png)|*.png|" +
+                    "All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            var bitmap = await ImageUtils.FromPC(filePath);
+            _initialImage = (Bitmap)bitmap.Clone();
+            //pictureBox.Image = bitmap;
+            var size = int.Parse(dpiTb1.Text);
+            pictureBox.Invoke(new MethodInvoker(() =>
+            {
+                pictureBox.Image = ImageUtils.Resize(bitmap, size, size);
+            }));
+
+            EnableComponents();
+            await DetectFaces();
+            previewBtn.Enabled = true;
+        }
+
+        private void btnChooseFile2_Click_1(object sender, EventArgs e)
+        {
+            chooseFie();
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            chooseFie();
         }
     }
 }
